@@ -342,7 +342,111 @@
       color: var(--label);
       font-size: 14px;
     }
-  </style>
+  
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .dashboard-body {
+    padding: 10px 12px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  .header-title {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 11px;
+  }
+  .kpi-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  .separator { display: none; } /* Hide the right arrow in pipeline on mobile */
+  .pipeline-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  .pipeline-flow {
+    min-width: 500px;
+  }
+  .tab-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    display: flex;
+    white-space: nowrap;
+  }
+  .tab-btn {
+    padding: 6px 14px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .main-content {
+    flex-direction: column;
+  }
+  .table-panel { width: 100%; }
+  .chart-panel { 
+    width: 100%; 
+    position: sticky;
+    bottom: 0;
+    margin-bottom: -10px; /* pull down to edge */
+    background: #FFFFFF;
+    border-top: 1px solid #E0E0E0;
+    z-index: 10;
+  }
+  .chart-panel iframe {
+    height: 300px !important;
+  }
+  
+  /* Tables to Cards */
+  .table-scroll { overflow-x: hidden; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { display: none; }
+  tr {
+    padding: 10px 0;
+    border-bottom: 1px solid #E0E0E0;
+    cursor: pointer;
+  }
+  tr:last-child {
+    border-bottom: none;
+  }
+  td {
+    padding: 0 !important;
+    border: none !important;
+    text-align: left !important;
+  }
+  td:nth-child(1), td:nth-child(2) {
+    display: inline-block;
+    width: auto;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  td:nth-child(2) {
+    margin-left: 8px;
+    margin-bottom: 6px;
+  }
+  td:not(:nth-child(1)):not(:nth-child(2)) {
+    display: inline-block;
+    width: auto;
+    font-size: 11px;
+    color: #626264;
+    margin-right: 6px;
+    margin-bottom: 4px;
+    background: #F0F0F0;
+    padding: 2px 6px !important;
+    border-radius: 4px;
+  }
+}
+</style>
+
 </head>
 <body>
 
