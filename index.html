@@ -314,11 +314,12 @@
     }
     #tv-chart-container {
       flex: 1;
+      min-height: 440px;
+    }
+    #tv-chart-container.empty {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px;
-      min-height: 420px;
     }
     #tv-chart-container .placeholder {
       text-align: center;
@@ -408,14 +409,8 @@
     </div>
 
     <!-- Right: TradingView Chart -->
-    <div class="chart-panel">
-      <div class="panel-header">
-        <span id="chart-title">チャート</span>
-        <a id="chart-tv-link" href="#" target="_blank" style="font-size:12px;color:var(--primary-600);text-decoration:none;display:none;">
-          TradingViewで開く ↗
-        </a>
-      </div>
-      <div id="tv-chart-container">
+    <div class="chart-panel" style="padding:16px;">
+      <div id="tv-chart-container" class="empty" style="width:100%; height:100%;">
         <div class="placeholder">
           <div class="icon">📈</div>
           銘柄をクリックするとチャートを表示します
@@ -1035,7 +1030,7 @@
             <thead><tr><th>コード</th><th>銘柄名</th><th>ステージ</th><th>L2</th><th>ゲート落ち理由</th></tr></thead>
             <tbody>${items.map(r => `
               <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" title="TradingViewで開く" onclick="event.stopPropagation()">🔗</a></td>
+                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
                 <td>${r.name}</td>
                 <td><span class="stage-tag band-reclaim">${r.stage}</span></td>
                 <td>${r.l2}</td>
@@ -1056,7 +1051,7 @@
             <thead><tr><th>コード</th><th>銘柄名</th><th>ステージ</th><th>L1</th><th>DPUP</th><th>FCFY%</th><th>ROIC%</th></tr></thead>
             <tbody>${items.map(r => `
               <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
                 <td>${r.name}</td>
                 <td>${r.stage}</td>
                 <td style="font-weight:600">${r.l1}</td>
@@ -1081,7 +1076,7 @@
               const tagCls = r.acc === 'BAND_RECLAIM' ? 'band-reclaim' : r.acc === 'POLYGRAPH_EARLY' ? 'polygraph-early' : 'accumulation-watch';
               return `
               <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
                 <td>${r.name}</td>
                 <td><span class="stage-tag ${tagCls}">${r.acc}</span></td>
                 <td>${r.days}</td>
@@ -1104,7 +1099,7 @@
             <thead><tr><th>コード</th><th>銘柄名</th><th>スコア</th><th>買い集め</th><th>理由</th></tr></thead>
             <tbody>${items.map(r => `
               <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
                 <td>${r.name}</td>
                 <td style="font-weight:600">${r.score}/9</td>
                 <td><span class="stage-tag accumulation-watch">${r.acc}</span></td>
@@ -1125,7 +1120,7 @@
             <thead><tr><th>コード</th><th>銘柄名</th><th>スコア</th><th>理由</th></tr></thead>
             <tbody>${items.map(r => `
               <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
                 <td>${r.name}</td>
                 <td style="font-weight:600">${r.score}/9</td>
                 <td style="font-size:11px;color:var(--label)">${r.reasons}</td>
@@ -1148,7 +1143,7 @@
               const sigCls = r.signal === 'STOP_LOSS' ? 'stop-loss' : r.signal === 'HOLD' ? 'hold' : 'consider-exit';
               return `
               <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
                 <td>${r.name}</td>
                 <td><span class="return-val ${retCls}">${r.return_pct > 0 ? '+' : ''}${r.return_pct}%</span></td>
                 <td><span class="signal-tag ${sigCls}">${r.signal}</span></td>
@@ -1170,62 +1165,24 @@
       document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
       document.querySelectorAll(`tbody tr[data-code="${code}"]`).forEach(tr => tr.classList.add('selected'));
 
-      // Update chart title
-      document.getElementById('chart-title').textContent = `チャート — ${code}`;
-      const tvLink = document.getElementById('chart-tv-link');
-      tvLink.href = `https://www.tradingview.com/chart/?symbol=TSE:${code}`;
-      tvLink.style.display = 'inline';
-
-      // Embed TradingView Advanced Chart Widget
       const container = document.getElementById('tv-chart-container');
-      container.innerHTML = '';
-
-      const widgetDiv = document.createElement('div');
-      widgetDiv.className = 'tradingview-widget-container';
-      widgetDiv.style.width = '100%';
-      widgetDiv.style.height = '100%';
-
-      const innerDiv = document.createElement('div');
-      innerDiv.className = 'tradingview-widget-container__widget';
-      innerDiv.style.width = '100%';
-      innerDiv.style.height = '100%';
-      widgetDiv.appendChild(innerDiv);
-
-      container.appendChild(widgetDiv);
-
-      const script = document.createElement('script');
-      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-      script.async = true;
-      script.textContent = JSON.stringify({
-        "symbol": "TSE:" + code,
-        "interval": "D",
-        "timezone": "Asia/Tokyo",
-        "theme": "light",
-        "style": "1",
-        "locale": "ja",
-        "width": "100%",
-        "height": "100%",
-        "hide_top_toolbar": false,
-        "hide_legend": false,
-        "save_image": false,
-        "studies": ["MASimple@tv-basicstudies"],
-        "show_popup_button": true,
-        "popup_width": "1000",
-        "popup_height": "650",
-        "backgroundColor": "rgba(255,255,255,1)",
-        "gridColor": "rgba(240,240,240,1)",
-      });
-      widgetDiv.appendChild(script);
-    }
-
-    // ─── Tabs ───
-    document.getElementById('tabs').addEventListener('click', e => {
-      const btn = e.target.closest('.tab-btn');
-      if (!btn) return;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      container.classList.remove('empty');
+      container.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-size:14px; font-weight:700; color:#032213;">チャート — ${code}</span>
+          <a href="https://www.tradingview.com/chart/?symbol=TSE:${code}" 
+             target="_blank" 
+             style="font-size:12px; color:#259D63; text-decoration:none;">
+            TradingViewで開く ↗
+          </a>
+        </div>
+        <iframe 
+          src="https://s.tradingview.com/widgetembed/?hideideas=1&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=ja&symbol=TSE:${code}&interval=D&theme=light&style=1&timezone=Asia%2FTokyo&studies=%5B%5D&withdateranges=1&hide_side_toolbar=0&allow_symbol_change=1&save_image=0&hidevolume=0"
+          style="width:100%; height:450px; border:1px solid #E0E0E0; border-radius:4px;"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      `;
     });
 
     // ─── Utility ───
