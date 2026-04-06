@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>株おじさんOS Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-1200: #032213;
+      --primary-900: #115A36;
+      --primary-600: #259D63;
+      --primary-400: #51B883;
+      --primary-200: #9BD4B5;
+      --primary-50: #E6F5EC;
+      --bg: #F8F8FB;
+      --bg-white: #FFFFFF;
+      --text: #1A1A1A;
+      --label: #626264;
+      --text-weak: #999999;
+      --border: #E0E0E0;
+      --red-600: #FE3939;
+      --red-50: #FDEEEE;
+      --orange-600: #FB5B01;
+      --orange-50: #FFF3EB;
+      --blue-600: #2B7DE1;
+      --blue-50: #EBF3FD;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .header h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-900);
+      letter-spacing: -0.02em;
+    }
+    .regime-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .regime-badge.risk-on { background: var(--primary-50); color: var(--primary-900); }
+    .regime-badge.risk-off { background: var(--red-50); color: var(--red-600); }
+    .regime-badge.neutral { background: var(--orange-50); color: var(--orange-600); }
+    .regime-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .regime-badge.risk-on .dot { background: var(--primary-600); }
+    .regime-badge.risk-off .dot { background: var(--red-600); }
+    .regime-badge.neutral .dot { background: var(--orange-600); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--label);
+    }
+    .header-meta .val { font-weight: 600; color: var(--text); }
+
+    /* ─── KPI Cards ─── */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      padding: 20px 32px;
+    }
+    .kpi-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+    .kpi-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .kpi-card .kpi-value {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .kpi-card .kpi-label {
+      font-size: 11px;
+      color: var(--label);
+      margin-top: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .kpi-card.highlight { border-color: var(--primary-400); background: var(--primary-50); }
+    .kpi-card.highlight .kpi-value { color: var(--primary-900); }
+    .kpi-card.warn { border-color: var(--red-600); background: var(--red-50); }
+    .kpi-card.warn .kpi-value { color: var(--red-600); }
+
+    /* ─── Pipeline ─── */
+    .pipeline-section {
+      padding: 0 32px 16px;
+    }
+    .pipeline {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      overflow-x: auto;
+    }
+    .pipeline-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 90px;
+      flex: 1;
+    }
+    .pipeline-stage .stage-count {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary-900);
+    }
+    .pipeline-stage .stage-label {
+      font-size: 10px;
+      color: var(--label);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .pipeline-arrow {
+      color: var(--text-weak);
+      font-size: 16px;
+      padding: 0 4px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Tabs ─── */
+    .tabs-wrapper { padding: 0 32px; }
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--border);
+    }
+    .tab-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--label);
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.15s;
+    }
+    .tab-btn:hover { color: var(--primary-900); }
+    .tab-btn.active {
+      color: var(--primary-900);
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--primary-600);
+    }
+
+    /* ─── Main layout ─── */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 20px 32px 32px;
+      min-height: 500px;
+    }
+    @media (max-width: 1100px) {
+      .main-content { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Table Panel ─── */
+    .panel {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .panel-header {
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary-900);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .panel-header .badge {
+      font-size: 11px;
+      background: var(--primary-50);
+      color: var(--primary-900);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead th {
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--label);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+    }
+    tbody td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: middle;
+    }
+    tbody tr { cursor: pointer; transition: background 0.1s; }
+    tbody tr:hover { background: var(--primary-50); }
+    tbody tr.selected { background: var(--primary-50); border-left: 3px solid var(--primary-600); }
+
+    .code-cell {
+      font-weight: 600;
+      color: var(--primary-900);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tv-link {
+      color: var(--text-weak);
+      text-decoration: none;
+      font-size: 12px;
+      transition: color 0.15s;
+    }
+    .tv-link:hover { color: var(--primary-600); }
+
+    .stage-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .stage-tag.band-reclaim { background: var(--primary-50); color: var(--primary-900); }
+    .stage-tag.polygraph-early { background: var(--blue-50); color: var(--blue-600); }
+    .stage-tag.accumulation-watch { background: #F5F5F5; color: var(--label); }
+
+    .signal-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .signal-tag.stop-loss { background: var(--red-50); color: var(--red-600); }
+    .signal-tag.hold { background: var(--primary-50); color: var(--primary-900); }
+    .signal-tag.consider-exit { background: var(--orange-50); color: var(--orange-600); }
+
+    .return-val.positive { color: var(--primary-600); font-weight: 600; }
+    .return-val.negative { color: var(--red-600); font-weight: 600; }
+
+    /* ─── Chart Panel ─── */
+    .chart-panel {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      min-height: 480px;
+    }
+    .chart-panel .panel-header {
+      flex-shrink: 0;
+    }
+    #tv-chart-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      min-height: 420px;
+    }
+    #tv-chart-container .placeholder {
+      text-align: center;
+      color: var(--text-weak);
+      font-size: 14px;
+    }
+    #tv-chart-container .placeholder .icon { font-size: 40px; margin-bottom: 8px; }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .table-scroll { max-height: 460px; overflow-y: auto; }
+
+    /* ─── Loading ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      color: var(--label);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-left">
+      <h1>📊 株おじさんOS</h1>
+      <span class="regime-badge" id="regime-badge">
+        <span class="dot"></span>
+        <span id="regime-text">—</span>
+      </span>
+    </div>
+    <div class="header-meta">
+      <span>VIX <span class="val" id="hdr-vix">—</span></span>
+      <span>AD5d <span class="val" id="hdr-ad">—</span></span>
+      <span>現金比率 <span class="val" id="hdr-cash">—</span></span>
+      <span id="hdr-date" style="color:var(--text-weak)">—</span>
+    </div>
+  </header>
+
+  <!-- KPI Strip -->
+  <div class="kpi-strip" id="kpi-strip"></div>
+
+  <!-- Pipeline -->
+  <div class="pipeline-section">
+    <div class="pipeline" id="pipeline"></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs-wrapper">
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-tab="overview">概要</button>
+      <button class="tab-btn" data-tab="accumulation">買い集め</button>
+      <button class="tab-btn" data-tab="early">初動</button>
+      <button class="tab-btn" data-tab="portfolio">保有銘柄</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Left: Tables -->
+    <div>
+      <!-- Overview Tab -->
+      <div class="tab-content active" id="tab-overview">
+        <div class="panel" id="panel-nearmiss-a" style="margin-bottom:16px;"></div>
+        <div class="panel" id="panel-nearmiss-b"></div>
+      </div>
+
+      <!-- Accumulation Tab -->
+      <div class="tab-content" id="tab-accumulation">
+        <div class="panel" id="panel-accumulation"></div>
+      </div>
+
+      <!-- Early Break Tab -->
+      <div class="tab-content" id="tab-early">
+        <div class="panel" id="panel-early-s1" style="margin-bottom:16px;"></div>
+        <div class="panel" id="panel-early-ns1"></div>
+      </div>
+
+      <!-- Portfolio Tab -->
+      <div class="tab-content" id="tab-portfolio">
+        <div class="panel" id="panel-portfolio"></div>
+      </div>
+    </div>
+
+    <!-- Right: TradingView Chart -->
+    <div class="chart-panel">
+      <div class="panel-header">
+        <span id="chart-title">チャート</span>
+        <a id="chart-tv-link" href="#" target="_blank" style="font-size:12px;color:var(--primary-600);text-decoration:none;display:none;">
+          TradingViewで開く ↗
+        </a>
+      </div>
+      <div id="tv-chart-container">
+        <div class="placeholder">
+          <div class="icon">📈</div>
+          銘柄をクリックするとチャートを表示します
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ─── Data Loading ───
+    let D = null;
+
+    // データはインライン埋め込み（file://対応）またはfetch（http://対応）
+    // main.py が dashboard_data.json 生成時に下の行を書き換える
+    const INLINE_DATA = {
+  "date": "20260406",
+  "updated_at": "2026-04-06 23:23",
+  "regime": {
+    "status": "RISK_ON",
+    "cash_ratio": 0.2,
+    "vix": 23.87,
+    "topix_trend": true,
+    "ad_ratio_5d": 2.93
+  },
+  "counts": {
+    "s": 0,
+    "a": 0,
+    "super_setup": 3,
+    "setup": 16,
+    "active": 17,
+    "quiet": 328,
+    "accumulation": 80,
+    "early_break": 33,
+    "early_stage1": 20,
+    "early_non_stage1": 13
+  },
+  "near_miss_a": [
+    {
+      "code": "2055",
+      "name": "日和産業",
+      "stage": "SUPER_SETUP",
+      "l2": 85,
+      "gate_reason": "ROIC不足"
+    },
+    {
+      "code": "7995",
+      "name": "バルカー",
+      "stage": "SUPER_SETUP",
+      "l2": 105,
+      "gate_reason": "ROIC不足|FCFマイナス"
+    },
+    {
+      "code": "4100",
+      "name": "戸田工業",
+      "stage": "SUPER_SETUP",
+      "l2": 55,
+      "gate_reason": "ROIC不足|DPUP不足"
+    },
+    {
+      "code": "9519",
+      "name": "レノバ",
+      "stage": "SETUP",
+      "l2": 75,
+      "gate_reason": "ROIC不足"
+    },
+    {
+      "code": "4691",
+      "name": "ワシントンホテル",
+      "stage": "SETUP",
+      "l2": 75,
+      "gate_reason": "ROIC不足"
+    },
+    {
+      "code": "5884",
+      "name": "クラダシ",
+      "stage": "SETUP",
+      "l2": 85,
+      "gate_reason": "ROIC不足|FCFマイナス|DPUP不足"
+    },
+    {
+      "code": "6351",
+      "name": "鶴見製作所",
+      "stage": "SETUP",
+      "l2": 75,
+      "gate_reason": "ROIC不足|FCFマイナス"
+    },
+    {
+      "code": "4565",
+      "name": "ネクセラファーマ",
+      "stage": "SETUP",
+      "l2": 75,
+      "gate_reason": ""
+    },
+    {
+      "code": "9514",
+      "name": "エフオン",
+      "stage": "SETUP",
+      "l2": 75,
+      "gate_reason": ""
+    },
+    {
+      "code": "3607",
+      "name": "クラウディアホールディングス",
+      "stage": "SETUP",
+      "l2": 65,
+      "gate_reason": ""
+    },
+    {
+      "code": "2762",
+      "name": "ＳＡＮＫＯ　ＭＡＲＫＥＴＩＮＧ　ＦＯＯＤＳ",
+      "stage": "SETUP",
+      "l2": 65,
+      "gate_reason": ""
+    },
+    {
+      "code": "7004",
+      "name": "カナデビア",
+      "stage": "SETUP",
+      "l2": 65,
+      "gate_reason": ""
+    },
+    {
+      "code": "9302",
+      "name": "三井倉庫ホールディングス",
+      "stage": "SETUP",
+      "l2": 50,
+      "gate_reason": ""
+    },
+    {
+      "code": "4996",
+      "name": "クミアイ化学工業",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "6736",
+      "name": "サン電子",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "9450",
+      "name": "ファイバーゲート",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "9468",
+      "name": "ＫＡＤＯＫＡＷＡ",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "4890",
+      "name": "坪田ラボ",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
+      "code": "9432",
+      "name": "ＮＴＴ",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    }
+  ],
+  "near_miss_b": [
+    {
+      "code": "6676",
+      "name": "バッファロー",
+      "stage": "QUIET",
+      "l1": 80,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "2173",
+      "name": "博展",
+      "stage": "QUIET",
+      "l1": 80,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "7131",
+      "name": "のむら産業",
+      "stage": "QUIET",
+      "l1": 70,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "2180",
+      "name": "サニーサイドアップグループ",
+      "stage": "QUIET",
+      "l1": 70,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "6045",
+      "name": "レントラックス",
+      "stage": "QUIET",
+      "l1": 65,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "6785",
+      "name": "鈴木",
+      "stage": "QUIET",
+      "l1": 60,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "6951",
+      "name": "日本電子",
+      "stage": "ACTIVE",
+      "l1": 55,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "4972",
+      "name": "綜研化学",
+      "stage": "QUIET",
+      "l1": 55,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "7715",
+      "name": "長野計器",
+      "stage": "QUIET",
+      "l1": 55,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    },
+    {
+      "code": "9702",
+      "name": "アイ・エス・ビー",
+      "stage": "QUIET",
+      "l1": 55,
+      "dpup": 0,
+      "fcfy": 0,
+      "roic": 0
+    }
+  ],
+  "buy_collect": [
+    {
+      "code": "4928",
+      "name": "ノエビアホールディングス",
+      "acc": "ACCUMULATION_WATCH",
+      "days": 2,
+      "l1": 25,
+      "rsr": 32.0,
+      "bc": 0.0043
+    },
+    {
+      "code": "6845",
+      "name": "アズビル",
+      "acc": "BAND_RECLAIM",
+      "days": 2,
+      "l1": 30,
+      "rsr": 41.0,
+      "bc": 0.0053
+    },
+    {
+      "code": "3920",
+      "name": "アイビーシー",
+      "acc": "BAND_RECLAIM",
+      "days": 2,
+      "l1": 65,
+      "rsr": 50.0,
+      "bc": 0.0077
+    },
+    {
+      "code": "7085",
+      "name": "カーブスホールディングス",
+      "acc": "BAND_RECLAIM",
+      "days": 2,
+      "l1": 35,
+      "rsr": 35.0,
+      "bc": 0.0111
+    },
+    {
+      "code": "6196",
+      "name": "ストライクグループ",
+      "acc": "BAND_RECLAIM",
+      "days": 2,
+      "l1": 35,
+      "rsr": 53.0,
+      "bc": 0.014
+    },
+    {
+      "code": "9163",
+      "name": "ナレルグループ",
+      "acc": "BAND_RECLAIM",
+      "days": 2,
+      "l1": 55,
+      "rsr": 36.0,
+      "bc": 0.0146
+    },
+    {
+      "code": "2154",
+      "name": "オープンアップグループ",
+      "acc": "BAND_RECLAIM",
+      "days": 2,
+      "l1": 50,
+      "rsr": 31.0,
+      "bc": 0.0149
+    },
+    {
+      "code": "7358",
+      "name": "ポピンズ",
+      "acc": "BAND_RECLAIM",
+      "days": 2,
+      "l1": 50,
+      "rsr": 47.0,
+      "bc": 0.0152
+    },
+    {
+      "code": "2763",
+      "name": "エフティグループ",
+      "acc": "POLYGRAPH_EARLY",
+      "days": 2,
+      "l1": 45,
+      "rsr": 24.0,
+      "bc": 0.016
+    },
+    {
+      "code": "9769",
+      "name": "学究社",
+      "acc": "BAND_RECLAIM",
+      "days": 2,
+      "l1": 30,
+      "rsr": 37.0,
+      "bc": 0.0162
+    }
+  ],
+  "early_stage1": [
+    {
+      "code": "4403",
+      "name": "日油",
+      "score": 4,
+      "acc": "ACCUMULATION_WATCH",
+      "reasons": "RSR65+ / BCAT上 / 21MA上"
+    },
+    {
+      "code": "7358",
+      "name": "ポピンズ",
+      "score": 4,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCATクロス / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "9743",
+      "name": "丹青社",
+      "score": 4,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCATクロス / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "6195",
+      "name": "ホープ",
+      "score": 4,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCATクロス / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "4826",
+      "name": "ＣＩＪ",
+      "score": 4,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCATクロス / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "3920",
+      "name": "アイビーシー",
+      "score": 3,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCAT上 / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "7080",
+      "name": "スポーツフィールド",
+      "score": 3,
+      "acc": "POLYGRAPH_EARLY",
+      "reasons": "BCAT上 / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "4051",
+      "name": "ＧＭＯフィナンシャルゲート",
+      "score": 3,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCAT上 / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "9672",
+      "name": "東京都競馬",
+      "score": 3,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCAT上 / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "6099",
+      "name": "エラン",
+      "score": 3,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCAT上 / 21MA上 / SQZ蓄積中"
+    }
+  ],
+  "early_non_stage1": [
+    {
+      "code": "9558",
+      "name": "ジャパニアス",
+      "score": 4,
+      "reasons": "BCAT上 / 21MA上 / 出来高増 / SQZ蓄積中"
+    },
+    {
+      "code": "2436",
+      "name": "共同ピーアール",
+      "score": 4,
+      "reasons": "BCATクロス / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "6814",
+      "name": "古野電気",
+      "score": 4,
+      "reasons": "RSR65+ / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "7611",
+      "name": "ハイデイ日高",
+      "score": 4,
+      "reasons": "BCATクロス / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "2317",
+      "name": "システナ",
+      "score": 4,
+      "reasons": "BCATクロス / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "6525",
+      "name": "ＫＯＫＵＳＡＩ　ＥＬＥＣＴＲＩＣ",
+      "score": 4,
+      "reasons": "RSR65+ / 出来高増 / SQZ蓄積中"
+    },
+    {
+      "code": "6806",
+      "name": "ヒロセ電機",
+      "score": 3,
+      "reasons": "RSR65+ / SQZ蓄積中"
+    },
+    {
+      "code": "2410",
+      "name": "キャリアデザインセンター",
+      "score": 3,
+      "reasons": "BCAT上 / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "5105",
+      "name": "ＴＯＹＯ　ＴＩＲＥ",
+      "score": 3,
+      "reasons": "BCATクロス / 21MA上"
+    },
+    {
+      "code": "9622",
+      "name": "スペース",
+      "score": 3,
+      "reasons": "BCAT上 / 21MA上 / 出来高増"
+    }
+  ],
+  "portfolio": [
+    {
+      "code": "5032",
+      "name": "ANYCOLOR",
+      "return_pct": -12.4,
+      "signal": "STOP_LOSS",
+      "reason": "損切り ▲12.4% (SL=8%)",
+      "urgency": "immediate",
+      "order_type": "market_open"
+    },
+    {
+      "code": "9983",
+      "name": "ファーストリテイリング",
+      "return_pct": 18.4,
+      "signal": "HOLD",
+      "reason": "保有継続 (return=+18.4%, 長期)",
+      "urgency": "",
+      "order_type": ""
+    },
+    {
+      "code": "7203",
+      "name": "トヨタ自動車",
+      "return_pct": 4.7,
+      "signal": "HOLD",
+      "reason": "保有継続 (return=+4.7%)",
+      "urgency": "",
+      "order_type": ""
+    },
+    {
+      "code": "6758",
+      "name": "ソニーグループ",
+      "return_pct": 2.9,
+      "signal": "CONSIDER_EXIT",
+      "reason": "15日保有でリターン+2.9% (< 3%) → 無反応タイムアウト",
+      "urgency": "end_of_day",
+      "order_type": "manual_review"
+    }
+  ]
+}; // %%INLINE_DATA%%
+
+    async function loadData() {
+      if (INLINE_DATA) {
+        D = INLINE_DATA;
+        render();
+        return;
+      }
+      try {
+        const resp = await fetch('./dashboard_data.json');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        D = await resp.json();
+        render();
+      } catch (e) {
+        console.error('JSON load failed:', e);
+        document.querySelector('.kpi-strip').innerHTML =
+          '<div class="loading">dashboard_data.json を読み込めません。main.py を実行してください。</div>';
+      }
+    }
+
+    // ─── Render ───
+    function render() {
+      if (!D) return;
+
+      // Header
+      const rg = D.regime;
+      const badge = document.getElementById('regime-badge');
+      const cls = rg.status === 'RISK_ON' ? 'risk-on' : rg.status === 'RISK_OFF' ? 'risk-off' : 'neutral';
+      badge.className = `regime-badge ${cls}`;
+      document.getElementById('regime-text').textContent = rg.status.replace('_', ' ');
+      document.getElementById('hdr-vix').textContent = rg.vix;
+      document.getElementById('hdr-ad').textContent = rg.ad_ratio_5d;
+      document.getElementById('hdr-cash').textContent = rg.cash_ratio + '%';
+      document.getElementById('hdr-date').textContent = formatDate(D.date) + ' ' + D.updated_at.split(' ')[1];
+
+      // KPI
+      const c = D.counts;
+      const kpis = [
+        { label: 'S級', value: c.s, cls: c.s > 0 ? 'highlight' : '' },
+        { label: 'A級', value: c.a, cls: c.a > 0 ? 'highlight' : '' },
+        { label: 'SUPER SETUP', value: c.super_setup },
+        { label: 'SET UP', value: c.setup },
+        { label: '買い集め', value: c.accumulation, cls: 'highlight' },
+        { label: '初動', value: c.early_break, cls: c.early_break > 0 ? 'highlight' : '' },
+        { label: '初動(S1)', value: c.early_stage1 },
+        { label: '初動(非S1)', value: c.early_non_stage1 },
+      ];
+      document.getElementById('kpi-strip').innerHTML = kpis.map(k =>
+        `<div class="kpi-card ${k.cls || ''}">
+           <div class="kpi-value">${k.value}</div>
+           <div class="kpi-label">${k.label}</div>
+         </div>`
+      ).join('');
+
+      // Pipeline
+      const stages = [
+        { label: 'Quiet', count: c.quiet },
+        { label: 'Active', count: c.active },
+        { label: '買い集め', count: c.accumulation },
+        { label: '初動', count: c.early_break },
+        { label: 'SET UP', count: c.setup },
+        { label: 'S.SETUP', count: c.super_setup },
+        { label: 'S級', count: c.s },
+      ];
+      document.getElementById('pipeline').innerHTML = stages.map((s, i) =>
+        (i > 0 ? '<div class="pipeline-arrow">→</div>' : '') +
+        `<div class="pipeline-stage">
+           <div class="stage-count">${s.count}</div>
+           <div class="stage-label">${s.label}</div>
+         </div>`
+      ).join('');
+
+      // Tables
+      renderNearMissA();
+      renderNearMissB();
+      renderAccumulation();
+      renderEarlyS1();
+      renderEarlyNS1();
+      renderPortfolio();
+    }
+
+    // ─── Table Renderers ───
+    function renderNearMissA() {
+      const el = document.getElementById('panel-nearmiss-a');
+      const items = D.near_miss_a || [];
+      el.innerHTML = `
+        <div class="panel-header">ニアミスA: テクニカル完成 <span class="badge">${items.length}件</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>コード</th><th>銘柄名</th><th>ステージ</th><th>L2</th><th>ゲート落ち理由</th></tr></thead>
+            <tbody>${items.map(r => `
+              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
+                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" title="TradingViewで開く" onclick="event.stopPropagation()">🔗</a></td>
+                <td>${r.name}</td>
+                <td><span class="stage-tag band-reclaim">${r.stage}</span></td>
+                <td>${r.l2}</td>
+                <td style="font-size:11px;color:var(--label)">${r.gate_reason}</td>
+              </tr>
+            `).join('')}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function renderNearMissB() {
+      const el = document.getElementById('panel-nearmiss-b');
+      const items = D.near_miss_b || [];
+      el.innerHTML = `
+        <div class="panel-header">ニアミスB: ファンダ良好 <span class="badge">${items.length}件</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>コード</th><th>銘柄名</th><th>ステージ</th><th>L1</th><th>DPUP</th><th>FCFY%</th><th>ROIC%</th></tr></thead>
+            <tbody>${items.map(r => `
+              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
+                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td>${r.name}</td>
+                <td>${r.stage}</td>
+                <td style="font-weight:600">${r.l1}</td>
+                <td>${r.dpup}</td>
+                <td>${r.fcfy}</td>
+                <td>${r.roic}</td>
+              </tr>
+            `).join('')}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function renderAccumulation() {
+      const el = document.getElementById('panel-accumulation');
+      const items = D.buy_collect || [];
+      el.innerHTML = `
+        <div class="panel-header">第1ステージ買い集め候補 <span class="badge">${items.length}件</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>コード</th><th>銘柄名</th><th>ステージ</th><th>日数</th><th>L1</th><th>RSR</th><th>収縮率</th></tr></thead>
+            <tbody>${items.map(r => {
+              const tagCls = r.acc === 'BAND_RECLAIM' ? 'band-reclaim' : r.acc === 'POLYGRAPH_EARLY' ? 'polygraph-early' : 'accumulation-watch';
+              return `
+              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
+                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td>${r.name}</td>
+                <td><span class="stage-tag ${tagCls}">${r.acc}</span></td>
+                <td>${r.days}</td>
+                <td>${r.l1}</td>
+                <td>${r.rsr}</td>
+                <td>${r.bc}</td>
+              </tr>`;
+            }).join('')}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function renderEarlyS1() {
+      const el = document.getElementById('panel-early-s1');
+      const items = D.early_stage1 || [];
+      el.innerHTML = `
+        <div class="panel-header">初動シグナル (Stage1由来) <span class="badge">${items.length}件</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>コード</th><th>銘柄名</th><th>スコア</th><th>買い集め</th><th>理由</th></tr></thead>
+            <tbody>${items.map(r => `
+              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
+                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td>${r.name}</td>
+                <td style="font-weight:600">${r.score}/9</td>
+                <td><span class="stage-tag accumulation-watch">${r.acc}</span></td>
+                <td style="font-size:11px;color:var(--label)">${r.reasons}</td>
+              </tr>
+            `).join('')}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function renderEarlyNS1() {
+      const el = document.getElementById('panel-early-ns1');
+      const items = D.early_non_stage1 || [];
+      el.innerHTML = `
+        <div class="panel-header">初動シグナル (非Stage1) <span class="badge">${items.length}件</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>コード</th><th>銘柄名</th><th>スコア</th><th>理由</th></tr></thead>
+            <tbody>${items.map(r => `
+              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
+                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td>${r.name}</td>
+                <td style="font-weight:600">${r.score}/9</td>
+                <td style="font-size:11px;color:var(--label)">${r.reasons}</td>
+              </tr>
+            `).join('')}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function renderPortfolio() {
+      const el = document.getElementById('panel-portfolio');
+      const items = D.portfolio || [];
+      el.innerHTML = `
+        <div class="panel-header">保有銘柄 EXIT 判定 <span class="badge">${items.length}件</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>コード</th><th>銘柄名</th><th>損益%</th><th>シグナル</th><th>理由</th><th>緊急度</th></tr></thead>
+            <tbody>${items.map(r => {
+              const retCls = r.return_pct >= 0 ? 'positive' : 'negative';
+              const sigCls = r.signal === 'STOP_LOSS' ? 'stop-loss' : r.signal === 'HOLD' ? 'hold' : 'consider-exit';
+              return `
+              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
+                <td class="code-cell">${r.code} <a class="tv-link" href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" onclick="event.stopPropagation()">🔗</a></td>
+                <td>${r.name}</td>
+                <td><span class="return-val ${retCls}">${r.return_pct > 0 ? '+' : ''}${r.return_pct}%</span></td>
+                <td><span class="signal-tag ${sigCls}">${r.signal}</span></td>
+                <td style="font-size:11px;color:var(--label)">${r.reason}</td>
+                <td style="font-size:11px">${r.urgency}</td>
+              </tr>`;
+            }).join('')}</tbody>
+          </table>
+        </div>`;
+    }
+
+    // ─── TradingView Chart ───
+    let currentCode = null;
+
+    function showChart(code) {
+      currentCode = code;
+
+      // Highlight selected row
+      document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
+      document.querySelectorAll(`tbody tr[data-code="${code}"]`).forEach(tr => tr.classList.add('selected'));
+
+      // Update chart title
+      document.getElementById('chart-title').textContent = `チャート — ${code}`;
+      const tvLink = document.getElementById('chart-tv-link');
+      tvLink.href = `https://www.tradingview.com/chart/?symbol=TSE:${code}`;
+      tvLink.style.display = 'inline';
+
+      // Embed TradingView Advanced Chart Widget
+      const container = document.getElementById('tv-chart-container');
+      container.innerHTML = '';
+
+      const widgetDiv = document.createElement('div');
+      widgetDiv.className = 'tradingview-widget-container';
+      widgetDiv.style.width = '100%';
+      widgetDiv.style.height = '100%';
+
+      const innerDiv = document.createElement('div');
+      innerDiv.className = 'tradingview-widget-container__widget';
+      innerDiv.style.width = '100%';
+      innerDiv.style.height = '100%';
+      widgetDiv.appendChild(innerDiv);
+
+      container.appendChild(widgetDiv);
+
+      const script = document.createElement('script');
+      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+      script.async = true;
+      script.textContent = JSON.stringify({
+        "symbol": "TSE:" + code,
+        "interval": "D",
+        "timezone": "Asia/Tokyo",
+        "theme": "light",
+        "style": "1",
+        "locale": "ja",
+        "width": "100%",
+        "height": "100%",
+        "hide_top_toolbar": false,
+        "hide_legend": false,
+        "save_image": false,
+        "studies": ["MASimple@tv-basicstudies"],
+        "show_popup_button": true,
+        "popup_width": "1000",
+        "popup_height": "650",
+        "backgroundColor": "rgba(255,255,255,1)",
+        "gridColor": "rgba(240,240,240,1)",
+      });
+      widgetDiv.appendChild(script);
+    }
+
+    // ─── Tabs ───
+    document.getElementById('tabs').addEventListener('click', e => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+
+    // ─── Utility ───
+    function formatDate(d) {
+      if (!d || d.length !== 8) return d;
+      return `${d.slice(0,4)}/${d.slice(4,6)}/${d.slice(6,8)}`;
+    }
+
+    // ─── Init ───
+    loadData();
+  </script>
+</body>
+</html>
