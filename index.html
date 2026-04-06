@@ -1044,12 +1044,28 @@
   ]
 }; // %%INLINE_DATA%%
 
-    async function loadData() {
+        async function loadData() {
       if (INLINE_DATA) {
         D = INLINE_DATA;
         render();
         return;
       }
+      try {
+        const resp = await fetch('./dashboard_data.json');
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        D = await resp.json();
+        console.log('Dashboard data loaded:', D);
+        render();
+      } catch (err) {
+        console.error('Failed to load dashboard data:', err);
+        document.querySelector('.main-content').innerHTML = 
+          '<div style="padding:40px; text-align:center; color:#FE3939; width:100%;">'
+          + '<p style="font-size:16px; font-weight:700;">データ読み込みエラー</p>'
+          + '<p style="font-size:12px; color:#626264;">dashboard_data.json が見つかりません</p>'
+          + '<p style="font-size:11px; color:#999;">' + err.message + '</p>'
+          + '</div>';
+      }
+    }
       try {
         const resp = await fetch('./dashboard_data.json');
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
@@ -1064,18 +1080,30 @@
 
     // ─── Render ───
     function render() {
-      if (!D) return;
+      if (!D) { console.error('data is null'); return; }
+
+      const counts = D.counts || {};
+      const regime = D.regime || {};
+      D.counts = counts;
+      D.regime = regime;
+      D.near_miss_a = D.near_miss_a || [];
+      D.near_miss_b = D.near_miss_b || [];
+      D.buy_collect = D.buy_collect || [];
+      D.early_stage1 = D.early_stage1 || [];
+      D.early_non_stage1 = D.early_non_stage1 || [];
+      D.portfolio = D.portfolio || [];
+
 
       // Header
       const rg = D.regime;
       const badge = document.getElementById('regime-badge');
       const cls = rg.status === 'RISK_ON' ? 'risk-on' : rg.status === 'RISK_OFF' ? 'risk-off' : 'neutral';
       badge.className = `regime-badge ${cls}`;
-      document.getElementById('regime-text').textContent = rg.status.replace('_', ' ');
-      document.getElementById('hdr-vix').textContent = rg.vix;
-      document.getElementById('hdr-ad').textContent = rg.ad_ratio_5d;
-      document.getElementById('hdr-cash').textContent = rg.cash_ratio + '%';
-      document.getElementById('hdr-date').textContent = formatDate(D.date) + ' ' + D.updated_at.split(' ')[1];
+      document.getElementById('regime-text').textContent = (rg.status || "").replace('_', ' ');
+      document.getElementById('hdr-vix').textContent = (rg.vix || "—");
+      document.getElementById('hdr-ad').textContent = (rg.ad_ratio_5d || "—");
+      document.getElementById('hdr-cash').textContent = (rg.cash_ratio || 0) + '%';
+      document.getElementById('hdr-date').textContent = formatDate(D.date || "") + ' ' + (D.updated_at || " ").split(' ')[1] || "";
 
       // KPI
       const c = D.counts;
@@ -1287,6 +1315,17 @@
           allowfullscreen>
         </iframe>
       `;
+    }
+
+    // ─── Tabs ───
+    document.getElementById('tabs').addEventListener('click', e => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.tab;
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.getElementById('pane-' + target).classList.add('active');
     });
 
     // ─── Utility ───
