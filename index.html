@@ -197,14 +197,7 @@
 
     /* ─── Main layout ─── */
     .main-content {
-      display: flex;
-      gap: 20px;
       padding: 20px 32px 32px;
-      min-height: 500px;
-    }
-    .main-content > div:first-child {
-      flex: 1;
-      min-width: 0;
     }
 
     /* ─── Table Panel ─── */
@@ -300,44 +293,113 @@
     .return-val.positive { color: var(--primary-600); font-weight: 600; }
     .return-val.negative { color: var(--red-600); font-weight: 600; }
 
-    /* ─── Chart Panel ─── */
-    .chart-panel {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      width: 480px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 80px;
-      align-self: flex-start;
-      max-height: calc(100vh - 100px);
-      overflow: hidden;
-    }
-    .chart-close-btn {
-      display: none;
-    }
-    #tv-chart-container {
-      width: 100%;
-    }
-    #tv-chart-container.empty {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 300px;
-    }
-    #tv-chart-container .placeholder {
-      text-align: center;
-      color: var(--text-weak);
-      font-size: 14px;
-    }
-    #tv-chart-container .placeholder .icon { font-size: 40px; margin-bottom: 8px; }
-    #tv-chart-container iframe {
-      height: 400px;
-    }
-
     .tab-content { display: none; }
     .tab-content.active { display: block; }
+
+    /* ─── Stock Cards ─── */
+    .stock-list {
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 769px) {
+      .stock-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+      }
+    }
+    .stock-card {
+      padding: 12px 14px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+    .stock-card:hover { background: var(--primary-50); }
+    .stock-card-row1 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stock-code {
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-weight: 700;
+      color: var(--primary-900);
+      font-size: 13px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .stock-code:hover { text-decoration: underline; }
+    .stock-code::after {
+      content: ' ↗';
+      font-size: 10px;
+      color: var(--primary-600);
+    }
+    .stock-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .stock-card-row2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .stage-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: var(--primary-50);
+      color: var(--primary-900);
+      white-space: nowrap;
+    }
+    .stage-badge.polygraph { background: var(--blue-50); color: var(--blue-600); }
+    .stage-badge.acc-watch { background: #F5F5F5; color: var(--label); }
+    .metric {
+      font-size: 11px;
+      color: var(--label);
+      font-weight: 600;
+    }
+    .stock-card-row3 {
+      font-size: 11px;
+      color: #CE0000;
+    }
+    .gate-reason {
+      background: var(--red-50);
+      padding: 2px 8px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .reason-text {
+      font-size: 11px;
+      color: var(--label);
+      line-height: 1.4;
+    }
+
+    /* Portfolio card specifics */
+    .return-val.positive { color: var(--primary-600); font-weight: 700; }
+    .return-val.negative { color: var(--red-600); font-weight: 700; }
+    .signal-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .signal-tag.stop-loss { background: var(--red-50); color: var(--red-600); }
+    .signal-tag.hold { background: var(--primary-50); color: var(--primary-900); }
+    .signal-tag.consider-exit { background: var(--orange-50); color: var(--orange-600); }
 
     .table-scroll { max-height: 460px; overflow-y: auto; }
 
@@ -398,87 +460,13 @@
     flex-shrink: 0;
   }
   .main-content {
-    flex-direction: column;
+    padding: 10px 12px;
   }
-  .chart-panel {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100% !important;
-    background: #FFFFFF;
-    border: none;
-    border-top: 2px solid #259D63;
-    border-radius: 0;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
-    z-index: 100;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-    padding: 12px;
-    max-height: 50vh;
-    overflow-y: auto;
-    top: auto;
-    align-self: auto;
+  .stock-list {
+    grid-template-columns: 1fr !important;
   }
-  .chart-panel.visible {
-    transform: translateY(0);
-  }
-  .chart-panel iframe {
-    height: 280px !important;
-  }
-  .chart-close-btn {
-    display: block !important;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #FDEEEE;
-    color: #CE0000;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 101;
-  }
-  
-  /* Tables to Cards */
-  .table-scroll { overflow-x: hidden; }
-  table, tbody, tr, td { display: block; width: 100%; }
-  thead { display: none; }
-  tr {
-    padding: 10px 0;
-    border-bottom: 1px solid #E0E0E0;
-    cursor: pointer;
-  }
-  tr:last-child {
-    border-bottom: none;
-  }
-  td {
-    padding: 0 !important;
-    border: none !important;
-    text-align: left !important;
-  }
-  td:nth-child(1), td:nth-child(2) {
-    display: inline-block;
-    width: auto;
+  .stock-name {
     font-size: 13px;
-    font-weight: 700;
-  }
-  td:nth-child(2) {
-    margin-left: 8px;
-    margin-bottom: 6px;
-  }
-  td:not(:nth-child(1)):not(:nth-child(2)) {
-    display: inline-block;
-    width: auto;
-    font-size: 11px;
-    color: #626264;
-    margin-right: 6px;
-    margin-bottom: 4px;
-    background: #F0F0F0;
-    padding: 2px 6px !important;
-    border-radius: 4px;
   }
 }
 </style>
@@ -523,40 +511,26 @@
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- Left: Tables -->
-    <div>
-      <!-- Overview Tab -->
-      <div class="tab-content active" id="tab-overview">
-        <div class="panel" id="panel-nearmiss-a" style="margin-bottom:16px;"></div>
-        <div class="panel" id="panel-nearmiss-b"></div>
-      </div>
-
-      <!-- Accumulation Tab -->
-      <div class="tab-content" id="tab-accumulation">
-        <div class="panel" id="panel-accumulation"></div>
-      </div>
-
-      <!-- Early Break Tab -->
-      <div class="tab-content" id="tab-early">
-        <div class="panel" id="panel-early-s1" style="margin-bottom:16px;"></div>
-        <div class="panel" id="panel-early-ns1"></div>
-      </div>
-
-      <!-- Portfolio Tab -->
-      <div class="tab-content" id="tab-portfolio">
-        <div class="panel" id="panel-portfolio"></div>
-      </div>
+    <!-- Overview Tab -->
+    <div class="tab-content active" id="tab-overview">
+      <div class="panel" id="panel-nearmiss-a" style="margin-bottom:16px;"></div>
+      <div class="panel" id="panel-nearmiss-b"></div>
     </div>
 
-    <!-- Right: TradingView Chart -->
-    <div class="chart-panel">
-      <button class="chart-close-btn" onclick="hideChart()">×</button>
-      <div id="tv-chart-container" class="empty">
-        <div class="placeholder">
-          <div class="icon">📈</div>
-          銘柄をクリックするとチャートを表示します
-        </div>
-      </div>
+    <!-- Accumulation Tab -->
+    <div class="tab-content" id="tab-accumulation">
+      <div class="panel" id="panel-accumulation"></div>
+    </div>
+
+    <!-- Early Break Tab -->
+    <div class="tab-content" id="tab-early">
+      <div class="panel" id="panel-early-s1" style="margin-bottom:16px;"></div>
+      <div class="panel" id="panel-early-ns1"></div>
+    </div>
+
+    <!-- Portfolio Tab -->
+    <div class="tab-content" id="tab-portfolio">
+      <div class="panel" id="panel-portfolio"></div>
     </div>
   </div>
 
@@ -1184,25 +1158,24 @@
       renderPortfolio();
     }
 
-    // ─── Table Renderers ───
+    // ─── Card Renderers ───
     function renderNearMissA() {
       const el = document.getElementById('panel-nearmiss-a');
       const items = D.near_miss_a || [];
       el.innerHTML = `
         <div class="panel-header">ニアミスA: テクニカル完成 <span class="badge">${items.length}件</span></div>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>コード</th><th>銘柄名</th><th>ステージ</th><th>L2</th><th>ゲート落ち理由</th></tr></thead>
-            <tbody>${items.map(r => `
-              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
-                <td>${r.name}</td>
-                <td><span class="stage-tag band-reclaim">${r.stage}</span></td>
-                <td>${r.l2}</td>
-                <td style="font-size:11px;color:var(--label)">${r.gate_reason}</td>
-              </tr>
-            `).join('')}</tbody>
-          </table>
+        <div class="stock-list">${items.map(r => `
+          <div class="stock-card" onclick="showChart('${r.code}')">
+            <div class="stock-card-row1">
+              <span class="stock-code">${r.code}</span>
+              <span class="stock-name">${r.name}</span>
+            </div>
+            <div class="stock-card-row2">
+              <span class="stage-badge">${r.stage}</span>
+              <span class="metric">L2 ${r.l2}</span>
+            </div>
+            ${r.gate_reason ? `<div class="stock-card-row3"><span class="gate-reason">⛔ ${r.gate_reason}</span></div>` : ''}
+          </div>`).join('')}
         </div>`;
     }
 
@@ -1211,21 +1184,18 @@
       const items = D.near_miss_b || [];
       el.innerHTML = `
         <div class="panel-header">ニアミスB: ファンダ良好 <span class="badge">${items.length}件</span></div>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>コード</th><th>銘柄名</th><th>ステージ</th><th>L1</th><th>DPUP</th><th>FCFY%</th><th>ROIC%</th></tr></thead>
-            <tbody>${items.map(r => `
-              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
-                <td>${r.name}</td>
-                <td>${r.stage}</td>
-                <td style="font-weight:600">${r.l1}</td>
-                <td>${r.dpup}</td>
-                <td>${r.fcfy}</td>
-                <td>${r.roic}</td>
-              </tr>
-            `).join('')}</tbody>
-          </table>
+        <div class="stock-list">${items.map(r => `
+          <div class="stock-card" onclick="showChart('${r.code}')">
+            <div class="stock-card-row1">
+              <span class="stock-code">${r.code}</span>
+              <span class="stock-name">${r.name}</span>
+            </div>
+            <div class="stock-card-row2">
+              <span class="stage-badge">${r.stage}</span>
+              <span class="metric">L1 ${r.l1}pt</span>
+            </div>
+            <div class="reason-text">DPUP ${r.dpup} / FCFY ${r.fcfy}% / ROIC ${r.roic}%</div>
+          </div>`).join('')}
         </div>`;
     }
 
@@ -1234,23 +1204,20 @@
       const items = D.buy_collect || [];
       el.innerHTML = `
         <div class="panel-header">第1ステージ買い集め候補 <span class="badge">${items.length}件</span></div>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>コード</th><th>銘柄名</th><th>ステージ</th><th>日数</th><th>L1</th><th>RSR</th><th>収縮率</th></tr></thead>
-            <tbody>${items.map(r => {
-              const tagCls = r.acc === 'BAND_RECLAIM' ? 'band-reclaim' : r.acc === 'POLYGRAPH_EARLY' ? 'polygraph-early' : 'accumulation-watch';
-              return `
-              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
-                <td>${r.name}</td>
-                <td><span class="stage-tag ${tagCls}">${r.acc}</span></td>
-                <td>${r.days}</td>
-                <td>${r.l1}</td>
-                <td>${r.rsr}</td>
-                <td>${r.bc}</td>
-              </tr>`;
-            }).join('')}</tbody>
-          </table>
+        <div class="stock-list">${items.map(r => {
+          const cls = r.acc === 'POLYGRAPH_EARLY' ? ' polygraph' : r.acc === 'ACCUMULATION_WATCH' ? ' acc-watch' : '';
+          return `
+          <div class="stock-card" onclick="showChart('${r.code}')">
+            <div class="stock-card-row1">
+              <span class="stock-code">${r.code}</span>
+              <span class="stock-name">${r.name}</span>
+            </div>
+            <div class="stock-card-row2">
+              <span class="stage-badge${cls}">${r.acc}</span>
+            </div>
+            <div class="reason-text">L1 ${r.l1} / RSR ${r.rsr} / 収縮率 ${(r.bc * 100).toFixed(1)}%</div>
+          </div>`;
+        }).join('')}
         </div>`;
     }
 
@@ -1259,19 +1226,21 @@
       const items = D.early_stage1 || [];
       el.innerHTML = `
         <div class="panel-header">初動シグナル (Stage1由来) <span class="badge">${items.length}件</span></div>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>コード</th><th>銘柄名</th><th>スコア</th><th>買い集め</th><th>理由</th></tr></thead>
-            <tbody>${items.map(r => `
-              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
-                <td>${r.name}</td>
-                <td style="font-weight:600">${r.score}/9</td>
-                <td><span class="stage-tag accumulation-watch">${r.acc}</span></td>
-                <td style="font-size:11px;color:var(--label)">${r.reasons}</td>
-              </tr>
-            `).join('')}</tbody>
-          </table>
+        <div class="stock-list">${items.map(r => {
+          const cls = r.acc === 'POLYGRAPH_EARLY' ? ' polygraph' : r.acc === 'ACCUMULATION_WATCH' ? ' acc-watch' : '';
+          return `
+          <div class="stock-card" onclick="showChart('${r.code}')">
+            <div class="stock-card-row1">
+              <span class="stock-code">${r.code}</span>
+              <span class="stock-name">${r.name}</span>
+            </div>
+            <div class="stock-card-row2">
+              <span class="metric" style="font-weight:700">Score ${r.score}/9</span>
+              <span class="stage-badge${cls}">${r.acc}</span>
+            </div>
+            <div class="reason-text">${r.reasons}</div>
+          </div>`;
+        }).join('')}
         </div>`;
     }
 
@@ -1280,18 +1249,17 @@
       const items = D.early_non_stage1 || [];
       el.innerHTML = `
         <div class="panel-header">初動シグナル (非Stage1) <span class="badge">${items.length}件</span></div>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>コード</th><th>銘柄名</th><th>スコア</th><th>理由</th></tr></thead>
-            <tbody>${items.map(r => `
-              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
-                <td>${r.name}</td>
-                <td style="font-weight:600">${r.score}/9</td>
-                <td style="font-size:11px;color:var(--label)">${r.reasons}</td>
-              </tr>
-            `).join('')}</tbody>
-          </table>
+        <div class="stock-list">${items.map(r => `
+          <div class="stock-card" onclick="showChart('${r.code}')">
+            <div class="stock-card-row1">
+              <span class="stock-code">${r.code}</span>
+              <span class="stock-name">${r.name}</span>
+            </div>
+            <div class="stock-card-row2">
+              <span class="metric" style="font-weight:700">Score ${r.score}/9</span>
+            </div>
+            <div class="reason-text">${r.reasons}</div>
+          </div>`).join('')}
         </div>`;
     }
 
@@ -1300,65 +1268,33 @@
       const items = D.portfolio || [];
       el.innerHTML = `
         <div class="panel-header">保有銘柄 EXIT 判定 <span class="badge">${items.length}件</span></div>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>コード</th><th>銘柄名</th><th>損益%</th><th>シグナル</th><th>理由</th><th>緊急度</th></tr></thead>
-            <tbody>${items.map(r => {
-              const retCls = r.return_pct >= 0 ? 'positive' : 'negative';
-              const sigCls = r.signal === 'STOP_LOSS' ? 'stop-loss' : r.signal === 'HOLD' ? 'hold' : 'consider-exit';
-              return `
-              <tr onclick="showChart('${r.code}')" data-code="${r.code}">
-                <td class="code-cell">${r.code} <a href="https://www.tradingview.com/chart/?symbol=TSE:${r.code}" target="_blank" style="margin-left:4px; font-size:11px; color:#259D63; text-decoration:none;" title="TradingViewで開く" onclick="event.stopPropagation()">↗</a></td>
-                <td>${r.name}</td>
-                <td><span class="return-val ${retCls}">${r.return_pct > 0 ? '+' : ''}${r.return_pct}%</span></td>
-                <td><span class="signal-tag ${sigCls}">${r.signal}</span></td>
-                <td style="font-size:11px;color:var(--label)">${r.reason}</td>
-                <td style="font-size:11px">${r.urgency}</td>
-              </tr>`;
-            }).join('')}</tbody>
-          </table>
+        <div class="stock-list">${items.map(r => {
+          const retCls = r.return_pct >= 0 ? 'positive' : 'negative';
+          const sigCls = r.signal === 'STOP_LOSS' ? 'stop-loss' : r.signal === 'HOLD' ? 'hold' : 'consider-exit';
+          return `
+          <div class="stock-card" onclick="showChart('${r.code}')">
+            <div class="stock-card-row1">
+              <span class="stock-code">${r.code}</span>
+              <span class="stock-name">${r.name}</span>
+              <span class="return-val ${retCls}">${r.return_pct > 0 ? '+' : ''}${r.return_pct}%</span>
+            </div>
+            <div class="stock-card-row2">
+              <span class="signal-tag ${sigCls}">${r.signal}</span>
+              ${r.urgency ? `<span class="metric">${r.urgency}</span>` : ''}
+            </div>
+            <div class="reason-text">${r.reason}</div>
+          </div>`;
+        }).join('')}
         </div>`;
     }
 
-    // ─── TradingView Chart ───
-    let currentCode = null;
-
+    // ─── TradingView (external link) ───
     function showChart(code) {
-      currentCode = code;
-
-      // Highlight selected row
-      document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
-      document.querySelectorAll(`tbody tr[data-code="${code}"]`).forEach(tr => tr.classList.add('selected'));
-
-      const container = document.getElementById('tv-chart-container');
-      const panel = document.querySelector('.chart-panel');
-      if (!container) return;
-      container.classList.remove('empty');
-      container.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding-right:40px;">
-          <span style="font-size:14px; font-weight:700; color:#032213;">チャート — ${code}</span>
-          <a href="https://www.tradingview.com/chart/?symbol=TSE%3A${code}" 
-             target="_blank" rel="noopener"
-             style="font-size:12px; color:#259D63; text-decoration:none;">
-            TradingViewで開く ↗
-          </a>
-        </div>
-        <div class="tradingview-widget-container">
-          <iframe 
-            scrolling="no"
-            allowtransparency="true"
-            frameborder="0"
-            src="https://s.tradingview.com/widgetembed/?frameElementId=tv_${code}&symbol=TSE%3A${code}&interval=D&hidesidetoolbar=0&symboledit=1&saveimage=0&toolbarbg=F1F3F6&studies=%5B%5D&theme=light&style=1&timezone=Asia%2FTokyo&withdateranges=1&showpopupbutton=1&locale=ja"
-            style="width:100%; border:1px solid #E0E0E0; border-radius:4px;">
-          </iframe>
-        </div>
-      `;
-      if (panel) panel.classList.add('visible');
-    }
-
-    function hideChart() {
-      const panel = document.querySelector('.chart-panel');
-      if (panel) panel.classList.remove('visible');
+      window.open(
+        `https://www.tradingview.com/chart/?symbol=TSE%3A${code}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
     }
 
     // ─── Tabs ───
