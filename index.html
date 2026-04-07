@@ -551,7 +551,7 @@
     // main.py が dashboard_data.json 生成時に下の行を書き換える
     const INLINE_DATA = {
   "date": "20260407",
-  "updated_at": "2026-04-07 23:24",
+  "updated_at": "2026-04-07 23:43",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
@@ -1096,40 +1096,59 @@
   ],
   "portfolio": [
     {
+      "id": "9029",
       "code": "9029",
       "name": "ヒガシホールディングス",
-      "return_pct": 0,
-      "signal": "HOLD",
-      "reason": "entry_price未設定",
-      "urgency": "",
-      "order_type": ""
+      "is_margin": false,
+      "return_pct": 286.2,
+      "signal": "CONSIDER_EXIT",
+      "reason": "Gaussian方向DOWN → 売りシグナル",
+      "urgency": "end_of_day",
+      "order_type": "manual_review"
     },
     {
+      "id": "5032_cash",
       "code": "5032",
       "name": "ANYCOLOR",
-      "return_pct": 0,
-      "signal": "HOLD",
-      "reason": "entry_price未設定",
-      "urgency": "",
-      "order_type": ""
+      "is_margin": false,
+      "return_pct": 24.6,
+      "signal": "TAKE_PROFIT",
+      "reason": "SMA20割れ (close=3105 < SMA20=3219)",
+      "urgency": "end_of_day",
+      "order_type": "market_open"
     },
     {
+      "id": "4410",
       "code": "4410",
       "name": "ハリマ化成グループ",
-      "return_pct": 0,
-      "signal": "HOLD",
-      "reason": "entry_price未設定",
-      "urgency": "",
-      "order_type": ""
+      "is_margin": true,
+      "return_pct": 8.7,
+      "signal": "TAKE_PROFIT",
+      "reason": "SMA20割れ (close=930 < SMA20=945)",
+      "urgency": "end_of_day",
+      "order_type": "market_open"
     },
     {
+      "id": "5032_margin",
+      "code": "5032",
+      "name": "ANYCOLOR",
+      "is_margin": true,
+      "return_pct": -9.9,
+      "signal": "STOP_LOSS",
+      "reason": "損切り ▲9.9% (SL=8%)",
+      "urgency": "immediate",
+      "order_type": "market_open"
+    },
+    {
+      "id": "6823",
       "code": "6823",
       "name": "リオン",
-      "return_pct": 0,
-      "signal": "HOLD",
-      "reason": "entry_price未設定",
-      "urgency": "",
-      "order_type": ""
+      "is_margin": true,
+      "return_pct": 9.4,
+      "signal": "CONSIDER_EXIT",
+      "reason": "Gaussian方向DOWN → 売りシグナル",
+      "urgency": "end_of_day",
+      "order_type": "manual_review"
     }
   ]
 }; // %%INLINE_DATA%%
@@ -1388,6 +1407,7 @@
             <div class="stock-card-row1">
               <span class="stock-code">${r.code}</span>
               <span class="stock-name">${r.name}</span>
+              <span class="stage-badge" style="font-size:9px;${r.is_margin ? 'background:#FFF3E0;color:#E65100' : 'background:#E8F5E9;color:#1B5E20'}">${r.is_margin ? '信用' : '現物'}</span>
               <span class="return-val ${retCls}">${r.return_pct > 0 ? '+' : ''}${r.return_pct}%</span>
             </div>
             <div class="stock-card-row2">
