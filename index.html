@@ -502,33 +502,42 @@
   <!-- Tabs -->
   <div class="tabs-wrapper">
     <div class="tabs" id="tabs">
-      <button class="tab-btn active" data-tab="overview">概要</button>
+      <button class="tab-btn active" data-tab="s">S級</button>
+      <button class="tab-btn" data-tab="a">A級</button>
+      <button class="tab-btn" data-tab="ss">SS</button>
+      <button class="tab-btn" data-tab="setup">SETUP</button>
+      <button class="tab-btn" data-tab="nearmiss">ニアミス</button>
       <button class="tab-btn" data-tab="accumulation">買い集め</button>
       <button class="tab-btn" data-tab="early">初動</button>
-      <button class="tab-btn" data-tab="portfolio">保有銘柄</button>
+      <button class="tab-btn" data-tab="portfolio">保有</button>
     </div>
   </div>
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- Overview Tab -->
-    <div class="tab-content active" id="tab-overview">
+    <div class="tab-content active" id="tab-s">
+      <div class="panel" id="panel-s-rank"></div>
+    </div>
+    <div class="tab-content" id="tab-a">
+      <div class="panel" id="panel-a-rank"></div>
+    </div>
+    <div class="tab-content" id="tab-ss">
+      <div class="panel" id="panel-super-setup"></div>
+    </div>
+    <div class="tab-content" id="tab-setup">
+      <div class="panel" id="panel-setup"></div>
+    </div>
+    <div class="tab-content" id="tab-nearmiss">
       <div class="panel" id="panel-nearmiss-a" style="margin-bottom:16px;"></div>
       <div class="panel" id="panel-nearmiss-b"></div>
     </div>
-
-    <!-- Accumulation Tab -->
     <div class="tab-content" id="tab-accumulation">
       <div class="panel" id="panel-accumulation"></div>
     </div>
-
-    <!-- Early Break Tab -->
     <div class="tab-content" id="tab-early">
       <div class="panel" id="panel-early-s1" style="margin-bottom:16px;"></div>
       <div class="panel" id="panel-early-ns1"></div>
     </div>
-
-    <!-- Portfolio Tab -->
     <div class="tab-content" id="tab-portfolio">
       <div class="panel" id="panel-portfolio"></div>
     </div>
@@ -542,11 +551,11 @@
     // main.py が dashboard_data.json 生成時に下の行を書き換える
     const INLINE_DATA = {
   "date": "20260407",
-  "updated_at": "2026-04-07 21:02",
+  "updated_at": "2026-04-07 23:24",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
-    "vix": 23.87,
+    "vix": 24.17,
     "topix_trend": true,
     "ad_ratio_5d": 3.13
   },
@@ -562,6 +571,69 @@
     "early_stage1": 24,
     "early_non_stage1": 20
   },
+  "s_rank": [],
+  "a_rank": [
+    {
+      "code": "6250",
+      "name": "やまびこ",
+      "rank": "A",
+      "stage": "SUPER_SETUP",
+      "l1": 55,
+      "l2": 105,
+      "l3": 0,
+      "dpup": 6.0,
+      "fcfy": 2.7,
+      "roic": 11.6,
+      "mine": 7,
+      "rsr": 88
+    },
+    {
+      "code": "6597",
+      "name": "ＨＰＣシステムズ",
+      "rank": "A",
+      "stage": "SETUP",
+      "l1": 40,
+      "l2": 95,
+      "l3": 10,
+      "dpup": 1.1,
+      "fcfy": 11.1,
+      "roic": 14.1,
+      "mine": 7,
+      "rsr": 93
+    }
+  ],
+  "super_setup_pass": [
+    {
+      "code": "6250",
+      "name": "やまびこ",
+      "rank": "A",
+      "stage": "SUPER_SETUP",
+      "l1": 55,
+      "l2": 105,
+      "l3": 0,
+      "dpup": 6.0,
+      "fcfy": 2.7,
+      "roic": 11.6,
+      "mine": 7,
+      "rsr": 88
+    }
+  ],
+  "setup_pass": [
+    {
+      "code": "6597",
+      "name": "ＨＰＣシステムズ",
+      "rank": "A",
+      "stage": "SETUP",
+      "l1": 40,
+      "l2": 95,
+      "l3": 10,
+      "dpup": 1.1,
+      "fcfy": 11.1,
+      "roic": 14.1,
+      "mine": 7,
+      "rsr": 93
+    }
+  ],
   "near_miss_a": [
     {
       "code": "9519",
@@ -710,90 +782,90 @@
       "name": "バッファロー",
       "stage": "QUIET",
       "l1": 80,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 9.4,
+      "fcfy": 22.1,
+      "roic": 11.6
     },
     {
       "code": "2173",
       "name": "博展",
       "stage": "QUIET",
       "l1": 80,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 5.6,
+      "fcfy": 17.3,
+      "roic": 25.5
     },
     {
       "code": "2180",
       "name": "サニーサイドアップグループ",
       "stage": "QUIET",
       "l1": 70,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 4.3,
+      "fcfy": 14.8,
+      "roic": 15.3
     },
     {
       "code": "6045",
       "name": "レントラックス",
       "stage": "QUIET",
       "l1": 65,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 3.5,
+      "fcfy": 11.4,
+      "roic": 10.7
     },
     {
       "code": "6785",
       "name": "鈴木",
       "stage": "QUIET",
       "l1": 60,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 5.5,
+      "fcfy": 6.1,
+      "roic": 10.8
     },
     {
       "code": "7715",
       "name": "長野計器",
       "stage": "QUIET",
       "l1": 55,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 9.0,
+      "fcfy": 10.2,
+      "roic": 10.3
     },
     {
       "code": "9702",
       "name": "アイ・エス・ビー",
       "stage": "QUIET",
       "l1": 55,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 4.8,
+      "fcfy": 3.2,
+      "roic": 10.7
     },
     {
       "code": "6101",
       "name": "ツガミ",
       "stage": "QUIET",
       "l1": 55,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 5.3,
+      "fcfy": 4.1,
+      "roic": 18.3
     },
     {
       "code": "6301",
       "name": "小松製作所",
       "stage": "QUIET",
       "l1": 50,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 5.3,
+      "fcfy": 5.1,
+      "roic": 11.4
     },
     {
       "code": "1605",
       "name": "ＩＮＰＥＸ",
       "stage": "QUIET",
       "l1": 50,
-      "dpup": 0,
-      "fcfy": 0,
-      "roic": 0
+      "dpup": 13.8,
+      "fcfy": 0.4,
+      "roic": 14.7
     }
   ],
   "buy_collect": [
@@ -1024,38 +1096,38 @@
   ],
   "portfolio": [
     {
+      "code": "9029",
+      "name": "ヒガシホールディングス",
+      "return_pct": 0,
+      "signal": "HOLD",
+      "reason": "entry_price未設定",
+      "urgency": "",
+      "order_type": ""
+    },
+    {
       "code": "5032",
       "name": "ANYCOLOR",
-      "return_pct": -11.3,
-      "signal": "STOP_LOSS",
-      "reason": "損切り ▲11.3% (SL=8%)",
-      "urgency": "immediate",
-      "order_type": "market_open"
-    },
-    {
-      "code": "9983",
-      "name": "ファーストリテイリング",
-      "return_pct": 18.3,
+      "return_pct": 0,
       "signal": "HOLD",
-      "reason": "保有継続 (return=+18.3%, 長期)",
+      "reason": "entry_price未設定",
       "urgency": "",
       "order_type": ""
     },
     {
-      "code": "7203",
-      "name": "トヨタ自動車",
-      "return_pct": 4.9,
+      "code": "4410",
+      "name": "ハリマ化成グループ",
+      "return_pct": 0,
       "signal": "HOLD",
-      "reason": "保有継続 (return=+4.9%)",
+      "reason": "entry_price未設定",
       "urgency": "",
       "order_type": ""
     },
     {
-      "code": "6758",
-      "name": "ソニーグループ",
-      "return_pct": 3.5,
+      "code": "6823",
+      "name": "リオン",
+      "return_pct": 0,
       "signal": "HOLD",
-      "reason": "保有継続 (return=+3.5%, 15日目)",
+      "reason": "entry_price未設定",
       "urgency": "",
       "order_type": ""
     }
@@ -1095,6 +1167,10 @@
       D.regime = regime;
       D.near_miss_a = D.near_miss_a || [];
       D.near_miss_b = D.near_miss_b || [];
+      D.s_rank = D.s_rank || [];
+      D.a_rank = D.a_rank || [];
+      D.super_setup_pass = D.super_setup_pass || [];
+      D.setup_pass = D.setup_pass || [];
       D.buy_collect = D.buy_collect || [];
       D.early_stage1 = D.early_stage1 || [];
       D.early_non_stage1 = D.early_non_stage1 || [];
@@ -1149,7 +1225,11 @@
          </div>`
       ).join('');
 
-      // Tables
+      // Panels
+      renderRankList('panel-s-rank', 'S級銘柄', D.s_rank || [], '本日S級該当なし');
+      renderRankList('panel-a-rank', 'A級銘柄', D.a_rank || [], '本日A級該当なし');
+      renderRankList('panel-super-setup', 'SUPER SETUP（L1通過）', D.super_setup_pass || [], '該当なし');
+      renderRankList('panel-setup', 'SETUP（L1通過）', D.setup_pass || [], '該当なし');
       renderNearMissA();
       renderNearMissB();
       renderAccumulation();
@@ -1159,6 +1239,38 @@
     }
 
     // ─── Card Renderers ───
+    function renderRankList(panelId, title, items, emptyMsg) {
+      const el = document.getElementById(panelId);
+      if (!el) return;
+      if (items.length === 0) {
+        el.innerHTML = `
+          <div class="panel-header">${title} <span class="badge">0件</span></div>
+          <div style="padding:32px; text-align:center; color:var(--label); font-size:14px;">${emptyMsg}</div>`;
+        return;
+      }
+      el.innerHTML = `
+        <div class="panel-header">${title} <span class="badge">${items.length}件</span></div>
+        <div class="stock-list">${items.map(r => {
+          const badge = r.rank === 'S' ? 'S級' : r.rank === 'A' ? 'A級' : r.stage;
+          return `
+          <div class="stock-card" onclick="showChart('${r.code}')">
+            <div class="stock-card-row1">
+              <span class="stock-code">${r.code}</span>
+              <span class="stock-name">${r.name}</span>
+            </div>
+            <div class="stock-card-row2">
+              <span class="stage-badge">${badge}</span>
+              <span class="metric">L1 ${r.l1}pt</span>
+              <span class="metric">L2 ${r.l2}pt</span>
+              ${r.l3 ? `<span class="metric">L3 ${r.l3}pt</span>` : ''}
+            </div>
+            <div class="reason-text">DPUP ${r.dpup} / FCFY ${r.fcfy}% / ROIC ${r.roic}%</div>
+            <div class="reason-text">Mine ${r.mine}/7  RSR ${r.rsr}</div>
+          </div>`;
+        }).join('')}
+        </div>`;
+    }
+
     function renderNearMissA() {
       const el = document.getElementById('panel-nearmiss-a');
       const items = D.near_miss_a || [];
