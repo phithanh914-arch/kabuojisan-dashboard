@@ -197,14 +197,14 @@
 
     /* ─── Main layout ─── */
     .main-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
       gap: 20px;
       padding: 20px 32px 32px;
       min-height: 500px;
     }
-    @media (max-width: 1100px) {
-      .main-content { grid-template-columns: 1fr; }
+    .main-content > div:first-child {
+      flex: 1;
+      min-width: 0;
     }
 
     /* ─── Table Panel ─── */
@@ -305,21 +305,26 @@
       background: var(--bg-white);
       border: 1px solid var(--border);
       border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      min-height: 480px;
-    }
-    .chart-panel .panel-header {
+      padding: 16px;
+      width: 480px;
       flex-shrink: 0;
+      position: sticky;
+      top: 80px;
+      align-self: flex-start;
+      max-height: calc(100vh - 100px);
+      overflow: hidden;
+    }
+    .chart-close-btn {
+      display: none;
     }
     #tv-chart-container {
-      flex: 1;
-      min-height: 440px;
+      width: 100%;
     }
     #tv-chart-container.empty {
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: 300px;
     }
     #tv-chart-container .placeholder {
       text-align: center;
@@ -327,6 +332,9 @@
       font-size: 14px;
     }
     #tv-chart-container .placeholder .icon { font-size: 40px; margin-bottom: 8px; }
+    #tv-chart-container iframe {
+      height: 400px;
+    }
 
     .tab-content { display: none; }
     .tab-content.active { display: block; }
@@ -392,18 +400,46 @@
   .main-content {
     flex-direction: column;
   }
-  .table-panel { width: 100%; }
-  .chart-panel { 
-    width: 100%; 
-    position: sticky;
+  .chart-panel {
+    position: fixed;
     bottom: 0;
-    margin-bottom: -10px; /* pull down to edge */
+    left: 0;
+    right: 0;
+    width: 100% !important;
     background: #FFFFFF;
-    border-top: 1px solid #E0E0E0;
-    z-index: 10;
+    border: none;
+    border-top: 2px solid #259D63;
+    border-radius: 0;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+    z-index: 100;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    padding: 12px;
+    max-height: 50vh;
+    overflow-y: auto;
+    top: auto;
+    align-self: auto;
+  }
+  .chart-panel.visible {
+    transform: translateY(0);
   }
   .chart-panel iframe {
-    height: 300px !important;
+    height: 280px !important;
+  }
+  .chart-close-btn {
+    display: block !important;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #FDEEEE;
+    color: #CE0000;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 101;
   }
   
   /* Tables to Cards */
@@ -513,8 +549,9 @@
     </div>
 
     <!-- Right: TradingView Chart -->
-    <div class="chart-panel" style="padding:16px;">
-      <div id="tv-chart-container" class="empty" style="width:100%; height:100%;">
+    <div class="chart-panel">
+      <button class="chart-close-btn" onclick="hideChart()">×</button>
+      <div id="tv-chart-container" class="empty">
         <div class="placeholder">
           <div class="icon">📈</div>
           銘柄をクリックするとチャートを表示します
@@ -1294,23 +1331,34 @@
       document.querySelectorAll(`tbody tr[data-code="${code}"]`).forEach(tr => tr.classList.add('selected'));
 
       const container = document.getElementById('tv-chart-container');
+      const panel = document.querySelector('.chart-panel');
+      if (!container) return;
       container.classList.remove('empty');
       container.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding-right:40px;">
           <span style="font-size:14px; font-weight:700; color:#032213;">チャート — ${code}</span>
-          <a href="https://www.tradingview.com/chart/?symbol=TSE:${code}" 
-             target="_blank" 
+          <a href="https://www.tradingview.com/chart/?symbol=TSE%3A${code}" 
+             target="_blank" rel="noopener"
              style="font-size:12px; color:#259D63; text-decoration:none;">
             TradingViewで開く ↗
           </a>
         </div>
-        <iframe 
-          src="https://s.tradingview.com/widgetembed/?hideideas=1&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=ja&symbol=TSE:${code}&interval=D&theme=light&style=1&timezone=Asia%2FTokyo&studies=%5B%5D&withdateranges=1&hide_side_toolbar=0&allow_symbol_change=1&save_image=0&hidevolume=0"
-          style="width:100%; height:450px; border:1px solid #E0E0E0; border-radius:4px;"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
+        <div class="tradingview-widget-container">
+          <iframe 
+            scrolling="no"
+            allowtransparency="true"
+            frameborder="0"
+            src="https://s.tradingview.com/widgetembed/?frameElementId=tv_${code}&symbol=TSE%3A${code}&interval=D&hidesidetoolbar=0&symboledit=1&saveimage=0&toolbarbg=F1F3F6&studies=%5B%5D&theme=light&style=1&timezone=Asia%2FTokyo&withdateranges=1&showpopupbutton=1&locale=ja"
+            style="width:100%; border:1px solid #E0E0E0; border-radius:4px;">
+          </iframe>
+        </div>
       `;
+      if (panel) panel.classList.add('visible');
+    }
+
+    function hideChart() {
+      const panel = document.querySelector('.chart-panel');
+      if (panel) panel.classList.remove('visible');
     }
 
     // ─── Tabs ───
@@ -1320,8 +1368,8 @@
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const target = btn.dataset.tab;
-      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-      document.getElementById('pane-' + target).classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-' + target).classList.add('active');
     });
 
     // ─── Utility ───
