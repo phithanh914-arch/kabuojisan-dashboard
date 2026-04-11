@@ -1,6 +1,6 @@
 {
-  "date": "20260213",
-  "updated_at": "2026-04-12 02:00",
+  "date": "20260216",
+  "updated_at": "2026-04-12 02:02",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
@@ -399,7 +399,7 @@
       "code": "3920",
       "name": "アイビーシー",
       "acc": "ACCUMULATION_WATCH",
-      "days": 199,
+      "days": 200,
       "l1": 65,
       "rsr": 53.0,
       "bc": 0.009
@@ -408,7 +408,7 @@
       "code": "7085",
       "name": "カーブスホールディングス",
       "acc": "ACCUMULATION_WATCH",
-      "days": 199,
+      "days": 200,
       "l1": 35,
       "rsr": 38.0,
       "bc": 0.011
@@ -417,7 +417,7 @@
       "code": "6196",
       "name": "ストライクグループ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 199,
+      "days": 200,
       "l1": 35,
       "rsr": 53.0,
       "bc": 0.0118
@@ -426,7 +426,7 @@
       "code": "9769",
       "name": "学究社",
       "acc": "ACCUMULATION_WATCH",
-      "days": 199,
+      "days": 200,
       "l1": 30,
       "rsr": 34.0,
       "bc": 0.0139
@@ -435,7 +435,7 @@
       "code": "6819",
       "name": "伊豆シャボテンリゾート",
       "acc": "ACCUMULATION_WATCH",
-      "days": 199,
+      "days": 200,
       "l1": 55,
       "rsr": 16.0,
       "bc": 0.0156
@@ -444,7 +444,7 @@
       "code": "7358",
       "name": "ポピンズ",
       "acc": "POLYGRAPH_EARLY",
-      "days": 199,
+      "days": 200,
       "l1": 50,
       "rsr": 49.0,
       "bc": 0.0159
@@ -453,7 +453,7 @@
       "code": "7638",
       "name": "ＮＥＷ　ＡＲＴ　ＨＯＬＤＩＮＧＳ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 199,
+      "days": 200,
       "l1": 55,
       "rsr": 26.0,
       "bc": 0.0162
@@ -462,7 +462,7 @@
       "code": "2154",
       "name": "オープンアップグループ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 199,
+      "days": 200,
       "l1": 50,
       "rsr": 24.0,
       "bc": 0.0166
@@ -471,7 +471,7 @@
       "code": "4012",
       "name": "アクシス",
       "acc": "ACCUMULATION_WATCH",
-      "days": 199,
+      "days": 200,
       "l1": 50,
       "rsr": 28.0,
       "bc": 0.0169
@@ -480,7 +480,7 @@
       "code": "9163",
       "name": "ナレルグループ",
       "acc": "POLYGRAPH_EARLY",
-      "days": 199,
+      "days": 200,
       "l1": 65,
       "rsr": 32.0,
       "bc": 0.018
@@ -626,7 +626,7 @@
       "code": "9029",
       "name": "ヒガシホールディングス",
       "is_margin": false,
-      "return_pct": 310.7,
+      "return_pct": 318.0,
       "signal": "CONSIDER_EXIT",
       "reason": "Gaussian方向DOWN → 売りシグナル",
       "urgency": "end_of_day",
@@ -637,9 +637,9 @@
       "code": "5032",
       "name": "ANYCOLOR",
       "is_margin": false,
-      "return_pct": 67.7,
+      "return_pct": 69.1,
       "signal": "TAKE_PROFIT",
-      "reason": "SMA20割れ (close=4180 < SMA20=4365)",
+      "reason": "SMA20割れ (close=4215 < SMA20=4354)",
       "urgency": "end_of_day",
       "order_type": "market_open"
     },
@@ -648,9 +648,9 @@
       "code": "4410",
       "name": "ハリマ化成グループ",
       "is_margin": true,
-      "return_pct": 19.8,
+      "return_pct": 18.4,
       "signal": "HOLD",
-      "reason": "保有継続 (return=+19.8%)",
+      "reason": "保有継続 (return=+18.4%)",
       "urgency": "",
       "order_type": ""
     },
@@ -659,9 +659,9 @@
       "code": "5032",
       "name": "ANYCOLOR",
       "is_margin": true,
-      "return_pct": 21.3,
+      "return_pct": 22.3,
       "signal": "TAKE_PROFIT",
-      "reason": "SMA20割れ (close=4180 < SMA20=4365)",
+      "reason": "SMA20割れ (close=4215 < SMA20=4354)",
       "urgency": "end_of_day",
       "order_type": "market_open"
     },
@@ -670,9 +670,9 @@
       "code": "6823",
       "name": "リオン",
       "is_margin": true,
-      "return_pct": 10.2,
+      "return_pct": 11.4,
       "signal": "HOLD",
-      "reason": "保有継続 (return=+10.2%)",
+      "reason": "保有継続 (return=+11.4%)",
       "urgency": "",
       "order_type": ""
     }
