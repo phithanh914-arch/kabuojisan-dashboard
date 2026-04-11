@@ -1,10 +1,10 @@
 {
   "date": "20260410",
-  "updated_at": "2026-04-10 21:02",
+  "updated_at": "2026-04-11 11:18",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
-    "vix": 21.04,
+    "vix": 19.49,
     "topix_trend": true,
     "ad_ratio_5d": 2.27
   },
