@@ -1,6 +1,6 @@
 {
-  "date": "20260410",
-  "updated_at": "2026-04-11 11:33",
+  "date": "20260405",
+  "updated_at": "2026-04-11 11:35",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
@@ -413,7 +413,7 @@
       "code": "3920",
       "name": "アイビーシー",
       "acc": "ACCUMULATION_WATCH",
-      "days": 6,
+      "days": 1,
       "l1": 65,
       "rsr": 53.0,
       "bc": 0.009
@@ -422,7 +422,7 @@
       "code": "7085",
       "name": "カーブスホールディングス",
       "acc": "ACCUMULATION_WATCH",
-      "days": 6,
+      "days": 1,
       "l1": 35,
       "rsr": 38.0,
       "bc": 0.011
@@ -431,7 +431,7 @@
       "code": "6196",
       "name": "ストライクグループ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 6,
+      "days": 1,
       "l1": 35,
       "rsr": 53.0,
       "bc": 0.0118
@@ -440,7 +440,7 @@
       "code": "9769",
       "name": "学究社",
       "acc": "ACCUMULATION_WATCH",
-      "days": 6,
+      "days": 1,
       "l1": 30,
       "rsr": 34.0,
       "bc": 0.0139
@@ -449,7 +449,7 @@
       "code": "6819",
       "name": "伊豆シャボテンリゾート",
       "acc": "ACCUMULATION_WATCH",
-      "days": 4,
+      "days": 1,
       "l1": 55,
       "rsr": 16.0,
       "bc": 0.0156
@@ -458,16 +458,16 @@
       "code": "7358",
       "name": "ポピンズ",
       "acc": "POLYGRAPH_EARLY",
-      "days": 6,
+      "days": 1,
       "l1": 50,
-      "rsr": 48.0,
+      "rsr": 49.0,
       "bc": 0.0159
     },
     {
       "code": "7638",
       "name": "ＮＥＷ　ＡＲＴ　ＨＯＬＤＩＮＧＳ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 6,
+      "days": 1,
       "l1": 60,
       "rsr": 26.0,
       "bc": 0.0162
@@ -476,7 +476,7 @@
       "code": "2154",
       "name": "オープンアップグループ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 6,
+      "days": 1,
       "l1": 50,
       "rsr": 24.0,
       "bc": 0.0166
@@ -485,7 +485,7 @@
       "code": "9644",
       "name": "タナベコンサルティンググループ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 6,
+      "days": 1,
       "l1": 50,
       "rsr": 34.0,
       "bc": 0.0167
@@ -494,7 +494,7 @@
       "code": "4012",
       "name": "アクシス",
       "acc": "ACCUMULATION_WATCH",
-      "days": 6,
+      "days": 1,
       "l1": 50,
       "rsr": 28.0,
       "bc": 0.0169
@@ -640,9 +640,9 @@
       "code": "9029",
       "name": "ヒガシホールディングス",
       "is_margin": false,
-      "return_pct": 282.3,
+      "return_pct": 280.9,
       "signal": "TAKE_PROFIT",
-      "reason": "SMA20割れ (close=1899 < SMA20=1903)",
+      "reason": "SMA20割れ (close=1892 < SMA20=1912)",
       "urgency": "end_of_day",
       "order_type": "market_open"
     },
@@ -651,9 +651,9 @@
       "code": "5032",
       "name": "ANYCOLOR",
       "is_margin": false,
-      "return_pct": 22.0,
+      "return_pct": 23.4,
       "signal": "TAKE_PROFIT",
-      "reason": "SMA20割れ (close=3040 < SMA20=3103)",
+      "reason": "SMA20割れ (close=3075 < SMA20=3314)",
       "urgency": "end_of_day",
       "order_type": "market_open"
     },
@@ -662,20 +662,20 @@
       "code": "4410",
       "name": "ハリマ化成グループ",
       "is_margin": true,
-      "return_pct": 9.7,
-      "signal": "HOLD",
-      "reason": "保有継続 (return=+9.7%)",
-      "urgency": "",
-      "order_type": ""
+      "return_pct": 7.2,
+      "signal": "TAKE_PROFIT",
+      "reason": "SMA20割れ (close=917 < SMA20=949)",
+      "urgency": "end_of_day",
+      "order_type": "market_open"
     },
     {
       "id": "5032_margin",
       "code": "5032",
       "name": "ANYCOLOR",
       "is_margin": true,
-      "return_pct": -11.8,
+      "return_pct": -10.8,
       "signal": "STOP_LOSS",
-      "reason": "損切り ▲11.8% (SL=8%)",
+      "reason": "損切り ▲10.8% (SL=8%)",
       "urgency": "immediate",
       "order_type": "market_open"
     },
@@ -684,11 +684,11 @@
       "code": "6823",
       "name": "リオン",
       "is_margin": true,
-      "return_pct": 9.7,
-      "signal": "HOLD",
-      "reason": "保有継続 (return=+9.7%)",
-      "urgency": "",
-      "order_type": ""
+      "return_pct": 6.4,
+      "signal": "TAKE_PROFIT",
+      "reason": "SMA20割れ (close=2773 < SMA20=2822)",
+      "urgency": "end_of_day",
+      "order_type": "market_open"
     }
   ]
 }
