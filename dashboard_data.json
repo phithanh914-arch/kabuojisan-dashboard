@@ -1,6 +1,6 @@
 {
   "date": "20260410",
-  "updated_at": "2026-04-12 16:18",
+  "updated_at": "2026-04-12 19:53",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
@@ -11,6 +11,7 @@
   "counts": {
     "s": 0,
     "a": 1,
+    "e": 0,
     "super_setup": 6,
     "setup": 29,
     "active": 70,
@@ -37,6 +38,7 @@
       "rsr": 88
     }
   ],
+  "e_rank": [],
   "super_setup_pass": [
     {
       "code": "2173",
