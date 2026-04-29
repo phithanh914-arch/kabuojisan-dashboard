@@ -1,10 +1,10 @@
 {
-  "date": "20260428",
-  "updated_at": "2026-04-28 21:01",
+  "date": "20260429",
+  "updated_at": "2026-04-29 21:01",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
-    "vix": 18.71,
+    "vix": 18.02,
     "topix_trend": true,
     "ad_ratio_5d": 0.8
   },
@@ -456,7 +456,7 @@
       "code": "7358",
       "name": "ポピンズ",
       "acc": "POLYGRAPH_EARLY",
-      "days": 18,
+      "days": 19,
       "l1": 50,
       "rsr": 49.0,
       "bc": 0.0038
@@ -465,7 +465,7 @@
       "code": "9644",
       "name": "タナベコンサルティンググループ",
       "acc": "BAND_RECLAIM",
-      "days": 18,
+      "days": 19,
       "l1": 50,
       "rsr": 46.0,
       "bc": 0.0055
@@ -474,7 +474,7 @@
       "code": "9252",
       "name": "ラストワンマイル",
       "acc": "ACCUMULATION_WATCH",
-      "days": 18,
+      "days": 19,
       "l1": 65,
       "rsr": 19.0,
       "bc": 0.0079
@@ -483,7 +483,7 @@
       "code": "4732",
       "name": "ユー・エス・エス",
       "acc": "ACCUMULATION_WATCH",
-      "days": 18,
+      "days": 19,
       "l1": 30,
       "rsr": 43.0,
       "bc": 0.0142
@@ -492,7 +492,7 @@
       "code": "9769",
       "name": "学究社",
       "acc": "ACCUMULATION_WATCH",
-      "days": 18,
+      "days": 19,
       "l1": 30,
       "rsr": 30.0,
       "bc": 0.0143
@@ -501,7 +501,7 @@
       "code": "3393",
       "name": "スターティアホールディングス",
       "acc": "POLYGRAPH_EARLY",
-      "days": 18,
+      "days": 19,
       "l1": 35,
       "rsr": 48.0,
       "bc": 0.016
@@ -510,7 +510,7 @@
       "code": "6845",
       "name": "アズビル",
       "acc": "ACCUMULATION_WATCH",
-      "days": 8,
+      "days": 9,
       "l1": 30,
       "rsr": 42.0,
       "bc": 0.0179
@@ -519,7 +519,7 @@
       "code": "6626",
       "name": "ＳＥＭＩＴＥＣ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 18,
+      "days": 19,
       "l1": 65,
       "rsr": 62.0,
       "bc": 0.0237
@@ -528,7 +528,7 @@
       "code": "4290",
       "name": "プレステージ・インターナショナル",
       "acc": "ACCUMULATION_WATCH",
-      "days": 1,
+      "days": 2,
       "l1": 45,
       "rsr": 35.0,
       "bc": 0.0239
@@ -537,7 +537,7 @@
       "code": "3561",
       "name": "力の源ホールディングス",
       "acc": "BAND_RECLAIM",
-      "days": 18,
+      "days": 19,
       "l1": 30,
       "rsr": 48.0,
       "bc": 0.0245
