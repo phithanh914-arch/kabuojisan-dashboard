@@ -1,10 +1,10 @@
 {
-  "date": "20260505",
-  "updated_at": "2026-05-05 21:02",
+  "date": "20260506",
+  "updated_at": "2026-05-06 21:02",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
-    "vix": 16.99,
+    "vix": 18.29,
     "topix_trend": true,
     "ad_ratio_5d": 0.92
   },
@@ -407,7 +407,7 @@
       "code": "9644",
       "name": "タナベコンサルティンググループ",
       "acc": "BAND_RECLAIM",
-      "days": 23,
+      "days": 24,
       "l1": 50,
       "rsr": 39.0,
       "bc": 0.0038
@@ -416,7 +416,7 @@
       "code": "7358",
       "name": "ポピンズ",
       "acc": "BAND_RECLAIM",
-      "days": 23,
+      "days": 24,
       "l1": 50,
       "rsr": 60.0,
       "bc": 0.0056
@@ -425,7 +425,7 @@
       "code": "9252",
       "name": "ラストワンマイル",
       "acc": "BAND_RECLAIM",
-      "days": 23,
+      "days": 24,
       "l1": 65,
       "rsr": 28.0,
       "bc": 0.0117
@@ -434,7 +434,7 @@
       "code": "4732",
       "name": "ユー・エス・エス",
       "acc": "ACCUMULATION_WATCH",
-      "days": 23,
+      "days": 24,
       "l1": 30,
       "rsr": 43.0,
       "bc": 0.012
@@ -443,7 +443,7 @@
       "code": "9039",
       "name": "サカイ引越センター",
       "acc": "POLYGRAPH_EARLY",
-      "days": 4,
+      "days": 5,
       "l1": 50,
       "rsr": 42.0,
       "bc": 0.013
@@ -452,7 +452,7 @@
       "code": "3393",
       "name": "スターティアホールディングス",
       "acc": "POLYGRAPH_EARLY",
-      "days": 23,
+      "days": 24,
       "l1": 35,
       "rsr": 46.0,
       "bc": 0.015
@@ -461,7 +461,7 @@
       "code": "6626",
       "name": "ＳＥＭＩＴＥＣ",
       "acc": "ACCUMULATION_WATCH",
-      "days": 23,
+      "days": 24,
       "l1": 65,
       "rsr": 60.0,
       "bc": 0.0199
@@ -470,7 +470,7 @@
       "code": "6845",
       "name": "アズビル",
       "acc": "ACCUMULATION_WATCH",
-      "days": 13,
+      "days": 14,
       "l1": 30,
       "rsr": 50.0,
       "bc": 0.0199
@@ -479,7 +479,7 @@
       "code": "6195",
       "name": "ホープ",
       "acc": "POLYGRAPH_EARLY",
-      "days": 3,
+      "days": 4,
       "l1": 45,
       "rsr": 34.0,
       "bc": 0.0216
@@ -488,7 +488,7 @@
       "code": "4767",
       "name": "テー・オー・ダブリュー",
       "acc": "POLYGRAPH_EARLY",
-      "days": 23,
+      "days": 24,
       "l1": 40,
       "rsr": 51.0,
       "bc": 0.0245
