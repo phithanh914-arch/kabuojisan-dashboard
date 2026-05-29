@@ -1,10 +1,10 @@
 {
-  "date": "20260528",
-  "updated_at": "2026-05-28 21:01",
+  "date": "20260529",
+  "updated_at": "2026-05-29 21:02",
   "regime": {
     "status": "RISK_ON",
     "cash_ratio": 0.2,
-    "vix": 17.01,
+    "vix": 0.0,
     "topix_trend": true,
     "ad_ratio_5d": 0.99
   },
@@ -254,13 +254,6 @@
       "gate_reason": ""
     },
     {
-      "code": "2590",
-      "name": "ダイドーグループホールディングス",
-      "stage": "SETUP",
-      "l2": 45,
-      "gate_reason": ""
-    },
-    {
       "code": "3093",
       "name": "トレジャー・ファクトリー",
       "stage": "SETUP",
@@ -286,6 +279,13 @@
       "name": "学究社",
       "stage": "SETUP",
       "l2": 50,
+      "gate_reason": ""
+    },
+    {
+      "code": "2590",
+      "name": "ダイドーグループホールディングス",
+      "stage": "SETUP",
+      "l2": 45,
       "gate_reason": ""
     },
     {
@@ -431,7 +431,7 @@
       "code": "4732",
       "name": "ユー・エス・エス",
       "acc": "POLYGRAPH_EARLY",
-      "days": 40,
+      "days": 41,
       "l1": 30,
       "rsr": 48.0,
       "bc": 0.0081
@@ -440,7 +440,7 @@
       "code": "9039",
       "name": "サカイ引越センター",
       "acc": "ACCUMULATION_WATCH",
-      "days": 10,
+      "days": 11,
       "l1": 50,
       "rsr": 45.0,
       "bc": 0.0101
@@ -449,7 +449,7 @@
       "code": "7740",
       "name": "タムロン",
       "acc": "POLYGRAPH_EARLY",
-      "days": 2,
+      "days": 3,
       "l1": 25,
       "rsr": 56.0,
       "bc": 0.0112
@@ -458,7 +458,7 @@
       "code": "2154",
       "name": "オープンアップグループ",
       "acc": "POLYGRAPH_EARLY",
-      "days": 2,
+      "days": 3,
       "l1": 45,
       "rsr": 49.0,
       "bc": 0.0151
@@ -467,7 +467,7 @@
       "code": "4287",
       "name": "ジャストプランニング",
       "acc": "ACCUMULATION_WATCH",
-      "days": 40,
+      "days": 41,
       "l1": 65,
       "rsr": 58.0,
       "bc": 0.0157
@@ -476,7 +476,7 @@
       "code": "7080",
       "name": "スポーツフィールド",
       "acc": "ACCUMULATION_WATCH",
-      "days": 12,
+      "days": 13,
       "l1": 55,
       "rsr": 38.0,
       "bc": 0.0175
@@ -485,7 +485,7 @@
       "code": "7358",
       "name": "ポピンズ",
       "acc": "POLYGRAPH_EARLY",
-      "days": 40,
+      "days": 41,
       "l1": 50,
       "rsr": 37.0,
       "bc": 0.022
@@ -494,7 +494,7 @@
       "code": "4767",
       "name": "テー・オー・ダブリュー",
       "acc": "POLYGRAPH_EARLY",
-      "days": 40,
+      "days": 41,
       "l1": 40,
       "rsr": 41.0,
       "bc": 0.0236
@@ -503,7 +503,7 @@
       "code": "3393",
       "name": "スターティアホールディングス",
       "acc": "ACCUMULATION_WATCH",
-      "days": 40,
+      "days": 41,
       "l1": 35,
       "rsr": 62.0,
       "bc": 0.0285
@@ -512,7 +512,7 @@
       "code": "2170",
       "name": "リンクアンドモチベーション",
       "acc": "BAND_RECLAIM",
-      "days": 3,
+      "days": 4,
       "l1": 35,
       "rsr": 54.0,
       "bc": 0.0295
