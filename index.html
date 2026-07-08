@@ -484,7 +484,7 @@
       </span>
     </div>
     <div class="header-meta">
-      <span>VIX <span class="val" id="hdr-vix">—</span></span>
+      <span>Nikkei VI <span class="val" id="hdr-vix">—</span></span>
       <span>AD5d <span class="val" id="hdr-ad">—</span></span>
       <span>現金比率 <span class="val" id="hdr-cash">—</span></span>
       <span id="hdr-date" style="color:var(--text-weak)">—</span>
@@ -1524,7 +1524,7 @@
       const cls = rg.status === 'RISK_ON' ? 'risk-on' : rg.status === 'RISK_OFF' ? 'risk-off' : 'neutral';
       badge.className = `regime-badge ${cls}`;
       document.getElementById('regime-text').textContent = (rg.status || "").replace('_', ' ');
-      document.getElementById('hdr-vix').textContent = (rg.vix || "—");
+      document.getElementById('hdr-vix').textContent = (rg.nikkei_vi || "—");
       document.getElementById('hdr-ad').textContent = (rg.ad_ratio_5d || "—");
       document.getElementById('hdr-cash').textContent = (rg.cash_ratio || 0) + '%';
       document.getElementById('hdr-date').textContent = formatDate(D.date || "") + ' ' + (D.updated_at || " ").split(' ')[1] || "";
