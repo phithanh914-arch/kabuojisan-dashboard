@@ -1,27 +1,27 @@
 {
-  "date": "20260804",
-  "updated_at": "2026-08-04 21:00",
+  "date": "20260805",
+  "updated_at": "2026-08-05 21:00",
   "regime": {
-    "status": "NEUTRAL",
-    "cash_ratio": 0.4,
+    "status": "RISK_ON",
+    "cash_ratio": 0.2,
     "vix": null,
-    "nikkei_vi": 34.27,
-    "topix_trend": false,
-    "ad_ratio_5d": 0.92,
+    "nikkei_vi": 33.07,
+    "topix_trend": true,
+    "ad_ratio_5d": 1.1,
     "failed_indicators": []
   },
   "counts": {
     "s": 0,
-    "a": 5,
+    "a": 3,
     "e": 0,
-    "super_setup": 0,
-    "setup": 95,
-    "active": 14,
-    "quiet": 291,
-    "accumulation": 37,
-    "early_break": 10,
-    "early_stage1": 3,
-    "early_non_stage1": 7
+    "super_setup": 1,
+    "setup": 77,
+    "active": 10,
+    "quiet": 217,
+    "accumulation": 43,
+    "early_break": 22,
+    "early_stage1": 8,
+    "early_non_stage1": 14
   },
   "s_rank": [],
   "a_rank": [
@@ -31,13 +31,13 @@
       "rank": "A",
       "stage": "SETUP",
       "l1": 60,
-      "l2": 115,
+      "l2": 85,
       "l3": 0,
-      "dpup": 4.6,
-      "fcfy": 6.6,
+      "dpup": 4.5,
+      "fcfy": 6.5,
       "roic": 11.2,
       "mine": 7,
-      "rsr": 80
+      "rsr": 78
     },
     {
       "code": "2767",
@@ -48,38 +48,10 @@
       "l2": 55,
       "l3": 0,
       "dpup": 3.6,
-      "fcfy": 3.3,
+      "fcfy": 3.2,
       "roic": 16.9,
       "mine": 5,
-      "rsr": 90
-    },
-    {
-      "code": "9900",
-      "name": "サガミホールディングス",
-      "rank": "A",
-      "stage": "SETUP",
-      "l1": 35,
-      "l2": 75,
-      "l3": 0,
-      "dpup": 1.0,
-      "fcfy": 0.6,
-      "roic": 11.0,
-      "mine": 7,
-      "rsr": 76
-    },
-    {
-      "code": "4768",
-      "name": "大塚商会",
-      "rank": "A",
-      "stage": "SETUP",
-      "l1": 40,
-      "l2": 45,
-      "l3": 0,
-      "dpup": 1.9,
-      "fcfy": 5.5,
-      "roic": 12.3,
-      "mine": 5,
-      "rsr": 72
+      "rsr": 89
     },
     {
       "code": "3179",
@@ -105,13 +77,13 @@
       "rank": "A",
       "stage": "SETUP",
       "l1": 60,
-      "l2": 115,
+      "l2": 85,
       "l3": 0,
-      "dpup": 4.6,
-      "fcfy": 6.6,
+      "dpup": 4.5,
+      "fcfy": 6.5,
       "roic": 11.2,
       "mine": 7,
-      "rsr": 80
+      "rsr": 78
     },
     {
       "code": "2767",
@@ -122,38 +94,10 @@
       "l2": 55,
       "l3": 0,
       "dpup": 3.6,
-      "fcfy": 3.3,
+      "fcfy": 3.2,
       "roic": 16.9,
       "mine": 5,
-      "rsr": 90
-    },
-    {
-      "code": "9900",
-      "name": "サガミホールディングス",
-      "rank": "A",
-      "stage": "SETUP",
-      "l1": 35,
-      "l2": 75,
-      "l3": 0,
-      "dpup": 1.0,
-      "fcfy": 0.6,
-      "roic": 11.0,
-      "mine": 7,
-      "rsr": 76
-    },
-    {
-      "code": "4768",
-      "name": "大塚商会",
-      "rank": "A",
-      "stage": "SETUP",
-      "l1": 40,
-      "l2": 45,
-      "l3": 0,
-      "dpup": 1.9,
-      "fcfy": 5.5,
-      "roic": 12.3,
-      "mine": 5,
-      "rsr": 72
+      "rsr": 89
     },
     {
       "code": "3179",
@@ -172,8 +116,36 @@
   ],
   "near_miss_a": [
     {
+      "code": "7976",
+      "name": "三菱鉛筆",
+      "stage": "SUPER_SETUP",
+      "l2": 95,
+      "gate_reason": "ROIC不足|FCFマイナス"
+    },
+    {
+      "code": "3036",
+      "name": "アルコニックス",
+      "stage": "SETUP",
+      "l2": 100,
+      "gate_reason": "ROIC不足|FCFマイナス"
+    },
+    {
+      "code": "6932",
+      "name": "遠藤照明",
+      "stage": "SETUP",
+      "l2": 65,
+      "gate_reason": "ROIC不足"
+    },
+    {
       "code": "5122",
       "name": "オカモト",
+      "stage": "SETUP",
+      "l2": 75,
+      "gate_reason": "ROIC不足|FCFマイナス"
+    },
+    {
+      "code": "9507",
+      "name": "四国電力",
       "stage": "SETUP",
       "l2": 75,
       "gate_reason": "ROIC不足|FCFマイナス"
@@ -193,50 +165,8 @@
       "gate_reason": "ROIC不足"
     },
     {
-      "code": "4074",
-      "name": "ラキール",
-      "stage": "SETUP",
-      "l2": 55,
-      "gate_reason": "ROIC不足"
-    },
-    {
-      "code": "7721",
-      "name": "東京計器",
-      "stage": "SETUP",
-      "l2": 60,
-      "gate_reason": "ROIC不足|FCFマイナス"
-    },
-    {
-      "code": "5027",
-      "name": "ＡｎｙＭｉｎｄ　Ｇｒｏｕｐ",
-      "stage": "SETUP",
-      "l2": 65,
-      "gate_reason": ""
-    },
-    {
-      "code": "6023",
-      "name": "ダイハツインフィニアース",
-      "stage": "SETUP",
-      "l2": 50,
-      "gate_reason": ""
-    },
-    {
-      "code": "6485",
-      "name": "前澤給装工業",
-      "stage": "SETUP",
-      "l2": 65,
-      "gate_reason": ""
-    },
-    {
-      "code": "6505",
-      "name": "東洋電機製造",
-      "stage": "SETUP",
-      "l2": 65,
-      "gate_reason": ""
-    },
-    {
-      "code": "6932",
-      "name": "遠藤照明",
+      "code": "3984",
+      "name": "ユーザーローカル",
       "stage": "SETUP",
       "l2": 65,
       "gate_reason": ""
@@ -246,27 +176,6 @@
       "name": "建設技術研究所",
       "stage": "SETUP",
       "l2": 65,
-      "gate_reason": ""
-    },
-    {
-      "code": "4543",
-      "name": "テルモ",
-      "stage": "SETUP",
-      "l2": 60,
-      "gate_reason": ""
-    },
-    {
-      "code": "2897",
-      "name": "日清食品ホールディングス",
-      "stage": "SETUP",
-      "l2": 50,
-      "gate_reason": ""
-    },
-    {
-      "code": "3861",
-      "name": "王子ホールディングス",
-      "stage": "SETUP",
-      "l2": 50,
       "gate_reason": ""
     },
     {
@@ -284,15 +193,15 @@
       "gate_reason": ""
     },
     {
-      "code": "4996",
-      "name": "クミアイ化学工業",
+      "code": "5451",
+      "name": "ヨドコウ",
       "stage": "SETUP",
       "l2": 50,
       "gate_reason": ""
     },
     {
-      "code": "7202",
-      "name": "いすゞ自動車",
+      "code": "7261",
+      "name": "マツダ",
       "stage": "SETUP",
       "l2": 50,
       "gate_reason": ""
@@ -305,22 +214,8 @@
       "gate_reason": ""
     },
     {
-      "code": "7888",
-      "name": "三光合成",
-      "stage": "SETUP",
-      "l2": 50,
-      "gate_reason": ""
-    },
-    {
       "code": "7949",
       "name": "小松ウオール工業",
-      "stage": "SETUP",
-      "l2": 50,
-      "gate_reason": ""
-    },
-    {
-      "code": "8097",
-      "name": "三愛オブリ",
       "stage": "SETUP",
       "l2": 50,
       "gate_reason": ""
@@ -340,22 +235,8 @@
       "gate_reason": ""
     },
     {
-      "code": "3632",
-      "name": "グリーホールディングス",
-      "stage": "SETUP",
-      "l2": 45,
-      "gate_reason": ""
-    },
-    {
-      "code": "3984",
-      "name": "ユーザーローカル",
-      "stage": "SETUP",
-      "l2": 45,
-      "gate_reason": ""
-    },
-    {
-      "code": "4776",
-      "name": "サイボウズ",
+      "code": "6776",
+      "name": "天昇電気工業",
       "stage": "SETUP",
       "l2": 45,
       "gate_reason": ""
@@ -368,36 +249,15 @@
       "gate_reason": ""
     },
     {
-      "code": "2305",
-      "name": "スタジオアリス",
+      "code": "7102",
+      "name": "日本車輌製造",
       "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "2497",
-      "name": "ユナイテッド",
-      "stage": "SETUP",
-      "l2": 35,
+      "l2": 40,
       "gate_reason": ""
     },
     {
       "code": "2502",
       "name": "アサヒグループホールディングス",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "2587",
-      "name": "サントリービバレッジ＆フード",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "2694",
-      "name": "焼肉坂井ホールディングス",
       "stage": "SETUP",
       "l2": 35,
       "gate_reason": ""
@@ -424,8 +284,8 @@
       "gate_reason": ""
     },
     {
-      "code": "3382",
-      "name": "セブン＆アイ・ホールディングス",
+      "code": "3632",
+      "name": "グリーホールディングス",
       "stage": "SETUP",
       "l2": 35,
       "gate_reason": ""
@@ -440,6 +300,13 @@
     {
       "code": "3793",
       "name": "ドリコム",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "3861",
+      "name": "王子ホールディングス",
       "stage": "SETUP",
       "l2": 35,
       "gate_reason": ""
@@ -473,8 +340,15 @@
       "gate_reason": ""
     },
     {
-      "code": "4816",
-      "name": "東映アニメーション",
+      "code": "4768",
+      "name": "大塚商会",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "4776",
+      "name": "サイボウズ",
       "stage": "SETUP",
       "l2": 35,
       "gate_reason": ""
@@ -494,8 +368,15 @@
       "gate_reason": ""
     },
     {
-      "code": "4927",
-      "name": "ポーラ・オルビスホールディングス",
+      "code": "4996",
+      "name": "クミアイ化学工業",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "5027",
+      "name": "ＡｎｙＭｉｎｄ　Ｇｒｏｕｐ",
       "stage": "SETUP",
       "l2": 35,
       "gate_reason": ""
@@ -515,48 +396,6 @@
       "gate_reason": ""
     },
     {
-      "code": "6630",
-      "name": "ヤーマン",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "7033",
-      "name": "マネジメントソリューションズ",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "7164",
-      "name": "全国保証",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "7261",
-      "name": "マツダ",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "7414",
-      "name": "小野建",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "7421",
-      "name": "カッパ・クリエイト",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
       "code": "7447",
       "name": "ナガイレーベン",
       "stage": "SETUP",
@@ -564,36 +403,22 @@
       "gate_reason": ""
     },
     {
-      "code": "7459",
-      "name": "メディパルホールディングス",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "7554",
-      "name": "幸楽苑",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "7628",
-      "name": "オーハシテクニカ",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "7630",
-      "name": "壱番屋",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
       "code": "7832",
       "name": "バンダイナムコホールディングス",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "7888",
+      "name": "三光合成",
+      "stage": "SETUP",
+      "l2": 35,
+      "gate_reason": ""
+    },
+    {
+      "code": "7919",
+      "name": "野崎印刷紙業",
       "stage": "SETUP",
       "l2": 35,
       "gate_reason": ""
@@ -613,27 +438,6 @@
       "gate_reason": ""
     },
     {
-      "code": "8273",
-      "name": "イズミ",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "9008",
-      "name": "京王電鉄",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "9064",
-      "name": "ヤマトホールディングス",
-      "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
       "code": "9697",
       "name": "カプコン",
       "stage": "SETUP",
@@ -641,17 +445,10 @@
       "gate_reason": ""
     },
     {
-      "code": "9788",
-      "name": "ナック",
+      "code": "1430",
+      "name": "ファーストコーポレーション",
       "stage": "SETUP",
-      "l2": 35,
-      "gate_reason": ""
-    },
-    {
-      "code": "9928",
-      "name": "ミロク情報サービス",
-      "stage": "SETUP",
-      "l2": 35,
+      "l2": 25,
       "gate_reason": ""
     },
     {
@@ -669,8 +466,29 @@
       "gate_reason": ""
     },
     {
+      "code": "2305",
+      "name": "スタジオアリス",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
       "code": "2335",
       "name": "キューブシステム",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
+      "code": "2587",
+      "name": "サントリービバレッジ＆フード",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
+      "code": "2694",
+      "name": "焼肉坂井ホールディングス",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
@@ -697,15 +515,15 @@
       "gate_reason": ""
     },
     {
-      "code": "3358",
-      "name": "Ｔｒａｉｌｈｅａｄ　Ｇｌｏｂａｌ　Ｈｏｌｄｉｎｇｓ",
+      "code": "3371",
+      "name": "ソフトクリエイトホールディングス",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
     },
     {
-      "code": "3371",
-      "name": "ソフトクリエイトホールディングス",
+      "code": "3382",
+      "name": "セブン＆アイ・ホールディングス",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
@@ -718,8 +536,8 @@
       "gate_reason": ""
     },
     {
-      "code": "4204",
-      "name": "積水化学工業",
+      "code": "3968",
+      "name": "セグエグループ",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
@@ -732,29 +550,8 @@
       "gate_reason": ""
     },
     {
-      "code": "4763",
-      "name": "クリーク・アンド・リバー社",
-      "stage": "SETUP",
-      "l2": 25,
-      "gate_reason": ""
-    },
-    {
-      "code": "4951",
-      "name": "エステー",
-      "stage": "SETUP",
-      "l2": 25,
-      "gate_reason": ""
-    },
-    {
       "code": "5028",
       "name": "セカンドサイトアナリティカ",
-      "stage": "SETUP",
-      "l2": 25,
-      "gate_reason": ""
-    },
-    {
-      "code": "5248",
-      "name": "テクノロジーズ",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
@@ -767,8 +564,29 @@
       "gate_reason": ""
     },
     {
+      "code": "7164",
+      "name": "全国保証",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
+      "code": "7202",
+      "name": "いすゞ自動車",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
       "code": "7211",
       "name": "三菱自動車工業",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
+      "code": "7414",
+      "name": "小野建",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
@@ -781,22 +599,43 @@
       "gate_reason": ""
     },
     {
-      "code": "7596",
-      "name": "魚力",
+      "code": "7554",
+      "name": "幸楽苑",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
     },
     {
-      "code": "9405",
-      "name": "朝日放送グループホールディングス",
+      "code": "8273",
+      "name": "イズミ",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
     },
     {
-      "code": "9628",
-      "name": "燦ホールディングス",
+      "code": "9008",
+      "name": "京王電鉄",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
+      "code": "9064",
+      "name": "ヤマトホールディングス",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
+      "code": "9788",
+      "name": "ナック",
+      "stage": "SETUP",
+      "l2": 25,
+      "gate_reason": ""
+    },
+    {
+      "code": "9928",
+      "name": "ミロク情報サービス",
       "stage": "SETUP",
       "l2": 25,
       "gate_reason": ""
@@ -804,58 +643,22 @@
   ],
   "near_miss_b": [
     {
-      "code": "1814",
-      "name": "大末建設",
-      "stage": "QUIET",
-      "l1": 80,
-      "dpup": 14.6,
-      "fcfy": 24.6,
-      "roic": 11.0
-    },
-    {
       "code": "7134",
       "name": "アップガレージグループ",
       "stage": "QUIET",
       "l1": 65,
-      "dpup": 3.4,
-      "fcfy": 6.0,
+      "dpup": 3.2,
+      "fcfy": 5.8,
       "roic": 14.9
     },
     {
-      "code": "7047",
-      "name": "ポート",
+      "code": "4691",
+      "name": "ワシントンホテル",
       "stage": "QUIET",
       "l1": 65,
-      "dpup": 5.7,
-      "fcfy": 3.4,
-      "roic": 11.3
-    },
-    {
-      "code": "4503",
-      "name": "アステラス製薬",
-      "stage": "QUIET",
-      "l1": 65,
-      "dpup": 4.4,
-      "fcfy": 12.6,
-      "roic": 10.7
-    },
-    {
-      "code": "6058",
-      "name": "ベクトル",
-      "stage": "QUIET",
-      "l1": 60,
-      "dpup": 3.1,
-      "fcfy": 8.6,
-      "roic": 19.3
-    },
-    {
-      "code": "6785",
-      "name": "鈴木",
-      "stage": "QUIET",
-      "l1": 60,
-      "dpup": 4.4,
-      "fcfy": 5.5,
-      "roic": 10.8
+      "dpup": 8.3,
+      "fcfy": 10.6,
+      "roic": 11.1
     },
     {
       "code": "2685",
@@ -867,21 +670,12 @@
       "roic": 11.8
     },
     {
-      "code": "5889",
-      "name": "Ｊａｐａｎ　Ｅｙｅｗｅａｒ　Ｈｏｌｄｉｎｇｓ",
-      "stage": "QUIET",
-      "l1": 55,
-      "dpup": 3.4,
-      "fcfy": 6.6,
-      "roic": 14.9
-    },
-    {
       "code": "6824",
       "name": "新コスモス電機",
       "stage": "QUIET",
       "l1": 55,
-      "dpup": 7.4,
-      "fcfy": 6.2,
+      "dpup": 7.1,
+      "fcfy": 6.1,
       "roic": 10.0
     },
     {
@@ -889,104 +683,156 @@
       "name": "ショーエイコーポレーション",
       "stage": "QUIET",
       "l1": 55,
-      "dpup": 20.9,
-      "fcfy": 12.6,
+      "dpup": 21.2,
+      "fcfy": 12.7,
       "roic": 12.1
+    },
+    {
+      "code": "2180",
+      "name": "サニーサイドアップグループ",
+      "stage": "QUIET",
+      "l1": 55,
+      "dpup": 2.1,
+      "fcfy": 10.3,
+      "roic": 15.3
+    },
+    {
+      "code": "7988",
+      "name": "ニフコ",
+      "stage": "QUIET",
+      "l1": 55,
+      "dpup": 3.8,
+      "fcfy": 5.8,
+      "roic": 12.2
+    },
+    {
+      "code": "5288",
+      "name": "アジアパイルホールディングス",
+      "stage": "QUIET",
+      "l1": 55,
+      "dpup": 16.9,
+      "fcfy": 8.0,
+      "roic": 10.3
+    },
+    {
+      "code": "1975",
+      "name": "朝日工業社",
+      "stage": "QUIET",
+      "l1": 55,
+      "dpup": 5.0,
+      "fcfy": 6.7,
+      "roic": 11.6
+    },
+    {
+      "code": "7608",
+      "name": "エスケイジャパン",
+      "stage": "QUIET",
+      "l1": 50,
+      "dpup": 1.1,
+      "fcfy": 2.4,
+      "roic": 21.8
     }
   ],
   "buy_collect": [
     {
       "code": "2411",
       "name": "ゲンダイエージェンシー",
-      "acc": "BAND_RECLAIM",
-      "days": 3,
+      "acc": "POLYGRAPH_EARLY",
+      "days": 4,
       "l1": 45,
-      "rsr": 38.0,
-      "bc": 0.0022
+      "rsr": 40.0,
+      "bc": 0.0026
     },
     {
       "code": "6929",
       "name": "日本セラミック",
       "acc": "BAND_RECLAIM",
-      "days": 47,
+      "days": 48,
       "l1": 30,
-      "rsr": 64.0,
-      "bc": 0.0073
+      "rsr": 62.0,
+      "bc": 0.0054
     },
     {
       "code": "7191",
       "name": "イントラスト",
       "acc": "POLYGRAPH_EARLY",
-      "days": 84,
+      "days": 85,
       "l1": 45,
-      "rsr": 58.0,
-      "bc": 0.0076
+      "rsr": 52.0,
+      "bc": 0.0059
+    },
+    {
+      "code": "1814",
+      "name": "大末建設",
+      "acc": "BAND_RECLAIM",
+      "days": 4,
+      "l1": 80,
+      "rsr": 77.0,
+      "bc": 0.0124
     },
     {
       "code": "7734",
       "name": "理研計器",
       "acc": "BAND_RECLAIM",
-      "days": 22,
+      "days": 23,
       "l1": 50,
-      "rsr": 56.0,
-      "bc": 0.0162
+      "rsr": 61.0,
+      "bc": 0.0173
     },
     {
-      "code": "1814",
-      "name": "大末建設",
-      "acc": "ACCUMULATION_WATCH",
-      "days": 3,
-      "l1": 80,
-      "rsr": 69.0,
-      "bc": 0.0201
-    },
-    {
-      "code": "4743",
-      "name": "アイティフォー",
+      "code": "7821",
+      "name": "前田工繊",
       "acc": "POLYGRAPH_EARLY",
-      "days": 4,
-      "l1": 45,
-      "rsr": 41.0,
-      "bc": 0.0217
+      "days": 1,
+      "l1": 35,
+      "rsr": 52.0,
+      "bc": 0.0189
+    },
+    {
+      "code": "2670",
+      "name": "エービーシー・マート",
+      "acc": "BAND_RECLAIM",
+      "days": 1,
+      "l1": 50,
+      "rsr": 46.0,
+      "bc": 0.0202
     },
     {
       "code": "9029",
       "name": "ヒガシホールディングス",
       "acc": "POLYGRAPH_EARLY",
-      "days": 3,
+      "days": 4,
       "l1": 80,
-      "rsr": 51.0,
-      "bc": 0.022
+      "rsr": 50.0,
+      "bc": 0.0203
     },
     {
       "code": "4287",
       "name": "ジャストプランニング",
       "acc": "POLYGRAPH_EARLY",
-      "days": 3,
+      "days": 4,
       "l1": 65,
-      "rsr": 50.0,
-      "bc": 0.0232
+      "rsr": 53.0,
+      "bc": 0.0207
     },
     {
-      "code": "3837",
-      "name": "アドソル日進",
+      "code": "4743",
+      "name": "アイティフォー",
       "acc": "POLYGRAPH_EARLY",
-      "days": 27,
-      "l1": 50,
-      "rsr": 37.0,
-      "bc": 0.0244
-    },
-    {
-      "code": "9272",
-      "name": "ブティックス",
-      "acc": "BAND_RECLAIM",
-      "days": 7,
+      "days": 5,
       "l1": 45,
       "rsr": 41.0,
-      "bc": 0.0311
+      "bc": 0.0215
     }
   ],
   "early_stage1": [
+    {
+      "code": "9271",
+      "name": "和心",
+      "score": 6,
+      "acc": "BAND_RECLAIM",
+      "reasons": "RSR65+ / BCATクロス / 21MA上 / SQZ蓄積中"
+    },
     {
       "code": "1879",
       "name": "新日本建設",
@@ -995,26 +841,54 @@
       "reasons": "RSR65+ / BCAT上 / 21MA上 / 出来高増"
     },
     {
-      "code": "2782",
-      "name": "セリア",
-      "score": 5,
-      "acc": "ACCUMULATION_WATCH",
-      "reasons": "RSR65+ / BCAT上 / 21MA上 / 出来高増"
+      "code": "7608",
+      "name": "エスケイジャパン",
+      "score": 4,
+      "acc": "BAND_RECLAIM",
+      "reasons": "RSR65+ / BCAT上 / 21MA上"
     },
     {
-      "code": "9271",
-      "name": "和心",
+      "code": "4977",
+      "name": "新田ゼラチン",
       "score": 4,
       "acc": "BAND_RECLAIM",
       "reasons": "RSR65+ / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "5288",
+      "name": "アジアパイルホールディングス",
+      "score": 4,
+      "acc": "BAND_RECLAIM",
+      "reasons": "RSR65+ / 21MA上 / SQZ蓄積中"
+    },
+    {
+      "code": "1814",
+      "name": "大末建設",
+      "score": 4,
+      "acc": "BAND_RECLAIM",
+      "reasons": "RSR65+ / 21MA上 / 出来高増"
+    },
+    {
+      "code": "2782",
+      "name": "セリア",
+      "score": 4,
+      "acc": "ACCUMULATION_WATCH",
+      "reasons": "RSR65+ / BCAT上 / 21MA上"
+    },
+    {
+      "code": "5015",
+      "name": "ビーピー・カストロール",
+      "score": 4,
+      "acc": "BAND_RECLAIM",
+      "reasons": "BCAT上 / 21MA上 / 出来高増 / SQZ蓄積中"
     }
   ],
   "early_non_stage1": [
     {
-      "code": "6328",
-      "name": "荏原実業",
-      "score": 6,
-      "reasons": "RSR65+ / BCAT上 / 21MA上 / 出来高増 / SQZ蓄積中"
+      "code": "6814",
+      "name": "古野電気",
+      "score": 5,
+      "reasons": "RSR65+ / BCATクロス / 21MA上"
     },
     {
       "code": "2820",
@@ -1023,10 +897,34 @@
       "reasons": "RSR65+ / BCAT上 / 21MA上 / SQZ蓄積中"
     },
     {
-      "code": "6432",
-      "name": "竹内製作所",
+      "code": "6328",
+      "name": "荏原実業",
       "score": 5,
-      "reasons": "RSR65+ / BCAT上 / 21MA上 / SQZ蓄積中"
+      "reasons": "RSR65+ / BCAT上 / 21MA上 / 出来高増"
+    },
+    {
+      "code": "8117",
+      "name": "中央自動車工業",
+      "score": 4,
+      "reasons": "RSR65+ / 21MA上 / 出来高増"
+    },
+    {
+      "code": "4732",
+      "name": "ユー・エス・エス",
+      "score": 4,
+      "reasons": "RSR65+ / BCAT上 / 出来高増"
+    },
+    {
+      "code": "7552",
+      "name": "ハピネット",
+      "score": 4,
+      "reasons": "RSR65+ / BCAT上 / 21MA上"
+    },
+    {
+      "code": "2702",
+      "name": "日本マクドナルドホールディングス",
+      "score": 4,
+      "reasons": "RSR65+ / BCAT上 / 21MA上"
     },
     {
       "code": "1418",
@@ -1041,16 +939,10 @@
       "reasons": "RSR65+ / BCAT上 / 21MA上"
     },
     {
-      "code": "7944",
-      "name": "ローランド",
+      "code": "5805",
+      "name": "ＳＷＣＣ",
       "score": 4,
       "reasons": "RSR65+ / BCAT上 / 21MA上"
-    },
-    {
-      "code": "7988",
-      "name": "ニフコ",
-      "score": 4,
-      "reasons": "RSR65+ / BCAT上 / 出来高増"
     }
   ],
   "portfolio": [
@@ -1059,9 +951,9 @@
       "code": "9029",
       "name": "ヒガシホールディングス",
       "is_margin": false,
-      "return_pct": 282.7,
+      "return_pct": 288.0,
       "signal": "TAKE_PROFIT",
-      "reason": "SMA20割れ (close=1901 < SMA20=1944)",
+      "reason": "SMA20割れ (close=1927 < SMA20=1944)",
       "urgency": "end_of_day",
       "order_type": "market_open"
     },
@@ -1070,9 +962,9 @@
       "code": "5032",
       "name": "ANYCOLOR",
       "is_margin": false,
-      "return_pct": 4.8,
+      "return_pct": 8.1,
       "signal": "HOLD",
-      "reason": "保有継続 (return=+4.8%)",
+      "reason": "保有継続 (return=+8.1%)",
       "urgency": "",
       "order_type": ""
     },
@@ -1081,20 +973,20 @@
       "code": "4410",
       "name": "ハリマ化成グループ",
       "is_margin": true,
-      "return_pct": 29.2,
-      "signal": "CONSIDER_EXIT",
-      "reason": "Gaussian方向DOWN → 売りシグナル",
-      "urgency": "end_of_day",
-      "order_type": "manual_review"
+      "return_pct": 33.2,
+      "signal": "HOLD",
+      "reason": "保有継続 (return=+33.2%)",
+      "urgency": "",
+      "order_type": ""
     },
     {
       "id": "5032_margin",
       "code": "5032",
       "name": "ANYCOLOR",
       "is_margin": true,
-      "return_pct": -24.2,
+      "return_pct": -21.8,
       "signal": "STOP_LOSS",
-      "reason": "損切り ▲24.2% (SL=8%)",
+      "reason": "損切り ▲21.8% (SL=8%)",
       "urgency": "immediate",
       "order_type": "market_open"
     },
@@ -1103,11 +995,11 @@
       "code": "6823",
       "name": "リオン",
       "is_margin": true,
-      "return_pct": 29.1,
-      "signal": "TAKE_PROFIT",
-      "reason": "SMA20割れ (close=3365 < SMA20=3425)",
+      "return_pct": 32.0,
+      "signal": "CONSIDER_EXIT",
+      "reason": "Gaussian方向DOWN → 売りシグナル",
       "urgency": "end_of_day",
-      "order_type": "market_open"
+      "order_type": "manual_review"
     }
   ]
 }
